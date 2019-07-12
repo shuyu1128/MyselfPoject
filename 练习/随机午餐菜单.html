@@ -23,12 +23,12 @@
             var islunch = window.confirm("是否吃午餐？");
             if(islunch){
                 var num = window.prompt("几个人吃午餐：");
-                for(var i=1;i<=num;i++)
+                for(var i=0;i<=num;i++)
                 {
-                    var who = window.prompt("第"+i+"个人叫：");
+                    var who = window.prompt("第"+(i+1)+"个人叫：");
                     people.push(who);
                 }
-                for(var j=1;j<=num;j++)
+                for(var j=0;j<=num;j++)
                 {
                     var lunch = chooseLunch();
                     alert(people[j]+"吃"+lunch);
@@ -43,7 +43,7 @@
             random *= 10; // random = random *10 相同
             random = Math.floor(random);
             switch (random) {
-                case 9: name = "宫保鸡丁"; break;
+                case 0: name = "宫保鸡丁"; break;
                 case 1: name = "土豆丝"; break;
                 case 2: name = "香辣肉丝"; break;
                 case 3: name = "锅包肉"; break;
