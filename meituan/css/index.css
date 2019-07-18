@@ -1,0 +1,22 @@
+.header{
+    height: 0.48rem;
+    background: #f00;
+    display: flex;
+    padding: 0.2rem;
+}
+.search{
+    width: 6.66rem ;
+    height: 0.5rem;
+    background: #EEEEEE;
+    border-radius: 0.25rem; 
+    border:none;
+    outline: none;
+    text-indent: 0.61rem;
+    background: #999 url(../images/search.png) 0.2rem 0.1rem no-repeat;
+    background-size: 0.3rem 0.3rem;
+
+}
+.message{
+    width: 0.28rem;
+    height: 0.3rem;
+}

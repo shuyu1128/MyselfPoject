@@ -1,0 +1,233 @@
+/* header 开始 */
+#header{
+    height: 32px;
+    line-height: 32px;
+    background: #a9180a;
+    border-bottom:1px solid #a9180a;
+}
+.header-login{
+    /* background: #0f0; */
+    height: 32px;
+    /* line-height: 32px; */
+    float: left;
+}
+.header-login span,.header-login a{
+    color:#fff;
+    font-size: 12px;
+}
+.header-login a{
+    /* 去掉a标签的下划线 */
+    text-decoration: none;
+    padding:0 10px 0 20px;
+}
+.header-list{
+    float:right;
+    /* background: #00ffff; */
+}
+/* 子代选择器 */
+.header-list > li{
+    float: left;
+    padding:0 14px 0 10px;
+    /* background: #ff0000; */
+}
+.header-list > li > a{
+    color:#fff;
+}
+.list-arrow{
+    /*  */
+    position: relative;
+}
+.sub-list{
+    position: absolute;
+    left:0px;
+    top:32px;
+    background: #fff;
+    padding: 10px;
+    border:1px solid #ccc;
+    border-top:none;
+    display: none;
+}
+.sub-list-tb{
+    width:72px;
+    line-height: 20px;
+    /* z-index:5; */
+}
+.sub-list > li > a{
+    color:#999;
+}
+/* class名为.list-arrow 的li  hover的时候  找到它里边class名为sub-list 的ul 显示 */
+.list-arrow:hover .sub-list{
+    display: block;
+}
+.list-arrow:hover{
+    background: #fff;
+}
+.list-arrow:hover > a{
+    color:#ff0036;
+    text-decoration: underline;
+}
+/* lihover 箭头转 */
+.list-arrow:hover .arrow {
+    transform: rotate(180deg);
+    transform-origin: 50% 25%;
+}
+.sub-list .list-tb-baby:hover{
+    color:#ff0036;
+    text-decoration: underline;
+}
+.my-car{
+    font-size:12px;
+    color:greenyellow;
+}
+/* header 结束 */
+/* 搜索 开始 */
+.logo-box{
+    overflow: hidden;
+}
+.logo{
+    width: 240px;
+    height: 130px;
+    float: left;
+}
+.search-box{
+    float: left;
+    margin-left:96px;
+    margin-top:38px;
+    overflow: hidden;
+}
+.search-content{
+    width: 623px;
+    height: 36px;
+    border:2px solid #ff0036;
+}
+.search-input{
+    width: 491px;
+    height: 36px;
+    border:none;
+    /* 输入框 选中样式   */
+    outline: none;
+    text-indent: 5px;
+    float: left;
+}
+
+/* 623 491 132 */
+.search-btn{
+    width: 132px;
+    height: 36px;
+    background: #ff0036;
+    border:none;
+    float: left;
+    font-size: 18px;
+    font-weight: 700;
+    color:#fff;
+    /* 文字之前空隙 */
+    letter-spacing: 5px;
+}
+.search-list li{
+    float: left;
+    margin-top:3px;
+    padding:0 12px;
+    position: relative;
+    left:-13px;
+}
+.search-list li::after{
+    content:'';
+    width:1px;
+    height:15px;
+    background: #999999;
+    position: absolute;
+    left:0;
+    top:4px;
+}
+.search-list li a{
+    color:#999;
+    font-size: 14px;
+}
+.search-list li.list-hot a{
+    color:#ff0036;
+}
+/* 搜索 结束 */
+/* nav 开始  */
+.nav{
+    padding-left:200px;
+    width:1030px;
+    overflow: hidden;
+    /* background: #000; */
+}
+.nav li{
+    float: left;
+}
+.nav li img{
+    width: 100px;
+    height: 30px;
+    margin-top:3px;
+}
+.nav a{
+    color:#333;
+    font-size: 16px;
+    font-weight:500;
+    display: block;
+    height: 35px;
+    line-height: 35px;
+    padding:0 8px;
+}
+
+/* 轮播图开始 */
+.slide-box{
+    height: 500px;
+    background: #ccc;
+}
+.slide-box .wrapper{
+    height: 500px;
+    background: #0000ff;
+    position: relative;
+}
+.menu-box{
+    position: absolute;
+    top:-35px;
+    left:0px;
+    background: #999999;
+    width: 200px;
+    height: 535px;
+}
+.img-box{
+    height: 500px;
+    overflow: hidden;
+}
+.img-box img{
+    width: 1230px;
+}
+.menu-title{
+    color:#fff;
+    height: 35px;
+    line-height: 35px;
+    background: #ff0036;
+    font-size:16px;
+    font-weight: 700;
+}
+.menu-title .icon-caidan{
+    margin:0 8px 0 14px;
+    font-size:18px;
+ 
+}
+.slide-box{
+    border-top:2px solid #ff0036;
+}
+.main-list{
+    height: 31.2px;
+    line-height: 31.2px;
+}
+.main-list > a{
+    color: #fff;
+    font-size: 14px;
+}
+.main-list .icon-gouwucheman{
+    font-size:12px;
+}
+.list-icon{
+    margin: 0 4px 0 14px;
+    opacity: 0.5;
+}
+.main-list:hover{
+    background: #fff;
+}
