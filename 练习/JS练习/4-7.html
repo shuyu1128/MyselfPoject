@@ -1,0 +1,29 @@
+<!-- 7.有一个三位数x，被4除余2，被7除余3，被9除余5，请求出这个数。 -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        var a;
+        for (a = 100; a <= 999; a++) {
+            if (a % 4 == 2 && a % 7 == 3 && a % 9 == 5) {
+                document.write(a);
+            } else{
+                document.write(" ");
+            }
+        }
+
+    </script>
+</body>
+
+</html>

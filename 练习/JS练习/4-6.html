@@ -13,20 +13,35 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+
 <body>
+  <!-- 思路：将总体都排到右侧，再将*与*之间加一个空格 -->
 
-
-
-    <script>
-        var line , i ;
-        for(line = 1; line<=5; line++){
-            
+  <script>
+    function shan(j) {
+      var i = j;
+      for (var x = i; x >= 1; x--) {
+        for (var y = 1; y <= x; y++) {
+          document.write("&nbsp");
         }
-    </script>
+        for (z = i - x; z >= 0; z--) {
+          document.write("*&nbsp");
+        }
+        document.write("<br>");
+      }
+    }
+    var b = prompt("请输入*层的值");
+    shan(b);
+
+  </script>
+
+
 </body>
+
 </html>
