@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        #small,
+        #big {
+            width: 400px;
+            height: 400px;
+            float: left;
+            overflow: hidden;
+        }
+
+        #small {
+            position: relative;
+        }
+
+        #drag {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: rgba(255, 255, 255, 0.5);
+            display: none;
+        }
+
+        #big {
+            display: none;
+            position: relative;
+        }
+
+        #big-img {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="small">
+            <img src="./img/Warframe0000.jpg" alt="">
+            <span id="drag"></span>
+        </div>
+        <div id="big">
+            <img id="big-img" src="./img/Warframe0001.jpg" alt="">
+        </div>
+    </div>
+
+    <script>
+        var oSmall = document.getElementById('small');
+        var oDrag = document.getElementById('drag');
+        var oBig = document.getElementById('big');
+        var oImg = document.getElementById('big-img');
+
+        oSmall.onmouseover = function () {
+            oDrag.style.display = "block";
+            oBig.style.display = "block";
+        }
+        oSmall.onmousemove = function (e) {
+
+            oDrag.style.left = e.clientX - oDrag.offsetWidth / 2 + "px";
+            oDrag.style.top = e.clientY - oDrag.offsetHeight / 2 + "px";
+            if (oDrag.offsetLeft < 0) {
+                oDrag.style.left = "0px";
+            }
+            var maxLeft = oSmall.offsetWidth - oDrag.offsetWidth;
+            if (oDrag.offsetLeft >= maxLeft) {
+                oDrag.style.left = maxLeft + "px";
+            }
+            if (oDrag.offsetTop < 0) {
+                oDrag.style.top = "0px";
+            }
+            var maxLeft = oSmall.offsetHeight - oDrag.offsetHeight;
+            if (oDrag.offsetTop >= maxLeft) {
+                oDrag.style.top = maxLeft + "px";
+            } 
+            var smallDis = oSmall.offsetWidth - oDrag.offsetWidth;
+            var bigDis = oImg.offsetWidth - oBig.offsetWidth;
+            var smallDisY = oSmall.offsetHeight - oDrag.offsetHeight;
+            var bigDisY = oImg.offsetHeight - oBig.offsetHeight;
+            var xPro = oDrag.offsetLeft / smallDis;
+            oImg.style.left = -bigDis * xPro + "px";
+            oImg.style.top = -oDrag.offsetTop / smallDisY * bigDisY + "px";
+        }
+        oSmall.onmouseout = function () {
+            oDrag.style.display = "none";
+            oBig.style.display = "none";
+        }
+
+
+    </script>
+
+</body>
+
+</html>
