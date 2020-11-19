@@ -1,4 +1,3 @@
-// 提交反馈
 <template>
   <div class="progress_style">
     <van-action-sheet
@@ -13,10 +12,10 @@
       class="van-hairline van-step van-step--vertical van-step--process"
     >
       <div class="van-step__title van-step__title--active">
-        <p data-v-793acac2="" style="color:#1989Fa">{{ nursingcontents }}</p>
+        <p data-v-793acac2="" style="color: #1989fa">{{ nursingcontents }}</p>
         <div class="text_style">
           <van-row
-            style="margin-bottom:6px"
+            style="margin-bottom: 6px"
             type="flex"
             justify="space-between"
           >
@@ -27,11 +26,13 @@
                 >
               </div>
               <div v-else>
-                <span style="margin-right:16px">开始时间：{{ begintime }}</span>
+                <span style="margin-right: 16px"
+                  >开始时间：{{ begintime }}</span
+                >
                 <span>结束时间：{{ endtime }}</span>
               </div>
             </van-col>
-            <van-col span="6" style="text-align: right;">
+            <van-col span="6" style="text-align: right">
               <span>
                 <van-icon name="manager" class="manager_style" />
                 {{ nowPeople.fullname }}
@@ -44,7 +45,7 @@
             </van-col>
           </van-row>
         </div>
-        <div style="min-height: 48px;margin-bottom: 16px;">
+        <div style="min-height: 48px; margin-bottom:0px">
           <van-field
             v-if="istext == '是'"
             v-model="message"
@@ -57,13 +58,20 @@
             show-word-limit
           />
         </div>
-        <van-row style="min-height: 48px;">
+        <van-row style="min-height: 48px">
           <van-col span="20">
             <div v-if="ispicture == '是'">
-              <van-image v-if="imgsrc" width="180" height="240" :src="imgsrc" />
+              <van-image
+                v-if="imgsrc"
+                width="180"
+                height="200"
+                radius="24"
+                :src="imgsrc"
+              />
               <van-uploader
                 v-else
                 class="uploader_style"
+                preview-size=120px
                 :after-read="afterRead"
               />
             </div>
@@ -84,7 +92,7 @@
       </div>
       <div class="van-step__circle-container">
         <i
-          style="color:#1989Fa"
+          style="color: #1989fa"
           class="van-icon van-icon-checked van-step__icon van-step__icon--active"
         >
         </i>
@@ -96,6 +104,7 @@
 
 <script>
 import axios from "axios";
+import { Toast } from "vant";
 export default {
   data() {
     return {
@@ -130,7 +139,8 @@ export default {
       formData.append("file", file.file);
       axios
         .post(
-          process.env.VUE_APP_URL+"/nursing/nursingContents/uploadNursingContentsFile",
+          process.env.VUE_APP_URL +
+            "/nursing/nursingContents/uploadNursingContentsFile",
           formData,
           { "Content-Type": "multipart/form-data" }
         )
@@ -142,16 +152,28 @@ export default {
         });
     },
     onSelect(item) {
-      let data = {
-        feedback: this.istext == "是" ? this.message : "",
-        fileid: this.ispicture == "是" ? this.fileId : "",
-        nursingContentsid: this.id,
-        type: this.type,
-        personid: this.type == "team" ? "" : this.nowPeople.personid,
-      };
-      this.$http.completeNursingContents(data).then((res) => {
-        if (this.$globalMethod.ifTips(res.data)) this.$emit("submitSuccess");
-      });
+      if (this.message == "" && this.istext == "是") {
+        Toast.fail({
+          message: `请输入反馈`,
+          position: `bottom`,
+        });
+      } else if (this.fileId == "" && this.ispicture == "是") {
+        Toast.fail({
+          message: `请上传 jpg 格式图片`,
+          position: `bottom`,
+        });
+      } else {
+        let data = {
+          feedback: this.istext == "是" ? this.message : "",
+          fileid: this.ispicture == "是" ? this.fileId : "",
+          nursingContentsid: this.id,
+          type: this.type,
+          personid: this.type == "team" ? "" : this.nowPeople.personid,
+        };
+        this.$http.completeNursingContents(data).then((res) => {
+          if (this.$globalMethod.ifTips(res.data)) this.$emit("submitSuccess");
+        });
+      }
     },
   },
 };
