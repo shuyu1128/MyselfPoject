@@ -1,0 +1,11 @@
+<template>
+  <!-- 库存统计 -->
+  <div>库存统计</div>
+</template>
+
+<script>
+export default {};
+</script>
+
+<style>
+</style>
