@@ -70,6 +70,14 @@
         </van-cell-group>
         <van-cell-group class="van-cell-style">
           <van-cell
+          title="修改密码"
+          style="background-color:#020f1d;color: #b4b9c0;"
+          is-link
+          @click="topage('/change-password')"
+          />
+        </van-cell-group>
+        <van-cell-group class="van-cell-style">
+          <van-cell
             title="退出登录"
             style="background-color:#020f1d;color: #b4b9c0;"
             is-link
@@ -106,6 +114,9 @@ export default {
         console.log(res.data);
         this.show = true;
       });
+    },
+     topage(path) {
+      this.$router.push(path);
     },
     // 退出登录
     out() {

@@ -41,6 +41,12 @@ const routes = [{
         component: () =>
             import ('../views/elderly-information/nursing-completion.vue'),
     },
+    {
+        path:'/change-password',
+        name:'修改密码',
+        component:()=>
+            import('../views/login/change-password.vue')
+    },
 
 ]
 

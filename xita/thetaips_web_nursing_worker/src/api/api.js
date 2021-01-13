@@ -11,6 +11,10 @@ export default {
     removeUser(params) {
         return http.post(`nursing/sysNursingUser/removeUser`, params)
     },
+    // 修改密码
+    updateReceivingUserPassword(params) {
+        return http.post(`nursing/sysNursingUser/updateReceivingUserPassword`, params)
+    },
     // 获取账户信息
     getUser(params) {
         return http.post(`/nursing/sysNursingUser/getUser`, params)

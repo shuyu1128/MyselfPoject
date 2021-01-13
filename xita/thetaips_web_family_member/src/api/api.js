@@ -15,6 +15,10 @@ export default {
     getUser(params) {
         return http.post(`family/sysFamilyUser/getUser`, params)
     },
+    // 修改密码
+    updateReceivingUserPassword(params) {
+        return http.post(`family/sysFamilyUser/updateReceivingUserPassword`, params)
+    },
     // 3.获取长者列表（姓名，id，健康状况，不包含完成度）
     getPersonListByFamily(params) {
         return http.post(`family/familyPerson/getPersonListByFamily`, params)
