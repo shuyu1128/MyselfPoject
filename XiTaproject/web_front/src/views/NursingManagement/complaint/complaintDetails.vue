@@ -100,13 +100,17 @@
           </div>
         </template>
         <div>
-          <el-image
-            v-if="detailsForm.isPicture == '是'"
-            style="width: 100px; height: 100px"
-            :src="detailsForm.imgsrc"
-            :preview-src-list="[detailsForm.imgsrc]"
-          >
-          </el-image>
+          <div v-if="detailsForm.isPicture == '是'" style="margin-left:20px">
+            <el-image
+              v-for="(item , index) in detailsForm.imgsrcarr"
+              :key="index"
+              style="width: 100px; height: 100px ;margin-right:10px"
+              :src="item"
+              :preview-src-list="[item]"
+            >
+            </el-image>
+          </div>
+
           <div v-if="detailsForm.isText == '是'" class="note_text">
             {{ detailsForm.feedback }}
           </div>

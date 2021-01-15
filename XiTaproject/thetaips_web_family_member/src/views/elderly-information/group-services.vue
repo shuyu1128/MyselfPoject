@@ -77,7 +77,7 @@ export default {
       let formData = {
         personid: this.nowId,
         type: "team",
-        nowDay: this.$globalMethod.formatTime(this.nowdate),
+        nowDay: this.$globalMethod.formatTimeStamp(this.nowdate, "Y-M-D"),
       };
       this.$http.getNursingContentsListByPersonId(formData).then((res) => {
         this.nursingList = res.data;

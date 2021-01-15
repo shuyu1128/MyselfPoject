@@ -26,7 +26,7 @@
         :nursingcontents="item.nursingContents"
         :nursingname="item.account"
         :overtime="$globalMethod.formatTimeStamp(item.overTime, 'Y-M-D h:m:s')"
-        :imgsrc="item.isPicture == '是' ? item.imgsrc : ''"
+        :imgsrcarr="item.isPicture == '是' ? item.imgsrcarr : []"
         :nursingid="item.nursingid"
         :id="item.id"
         :type="'person'"
@@ -77,10 +77,18 @@ export default {
       let formData = {
         personid: this.nowId,
         type: "person",
-        nowDay: this.$globalMethod.formatTime(this.nowdate),
+        nowDay: this.$globalMethod.formatTimeStamp(this.nowdate, "Y-M-D"),
       };
       this.$http.getNursingContentsListByPersonId(formData).then((res) => {
         this.nursingList = res.data;
+        for (let a = 0; a < this.nursingList.length; a++) {
+          if (typeof this.nursingList[a].imgsrc !== "undefined") {
+            let obj = this.nursingList[a].imgsrc.split(",");
+            this.nursingList[a].imgsrcarr = Object.values(obj);
+            console.log(this.nursingList[a].imgsrcarr);
+          }
+        }
+        console.log(this.nursingList);
       });
     },
   },

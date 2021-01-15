@@ -84,17 +84,36 @@
                 </div>
               </template>
               <div>
-                <el-image
+                <div
                   v-if="item.isPicture == '是'"
-                  style="width: 100px; height: 100px"
-                  :src="item.imgsrc"
-                  :preview-src-list="[item.imgsrc]"
+                  style="height: 100px; float: left"
                 >
-                </el-image>
-
-                <div v-if="item.isText == '是'" class="note_text">
-                  {{ item.feedback }}
+                  <el-image
+                    v-for="(items, index) in item.imgsrcarr"
+                    :key="index"
+                    style="width: 100px; height: 100px; margin-right: 10px"
+                    :src="items"
+                    :preview-src-list="[items]"
+                  >
+                  </el-image>
                 </div>
+                <div
+                  v-if="item.isText == '是' && item.isPicture == '是'"
+                  style="float: left; width: calc(100% - 330px)"
+                >
+                  <div class="note_textboth">
+                    {{ item.feedback }}
+                  </div>
+                </div>
+                <div
+                  v-if="item.isText == '是' && item.isPicture !== '是'"
+                  style="float: left; width: 100%"
+                >
+                  <div class="note_text">
+                    {{ item.feedback }}
+                  </div>
+                </div>
+
                 <div
                   v-if="item.state == 0 && item.nursingid"
                   class="nursing_list_footer"
@@ -236,7 +255,32 @@ export default {
         this.NursingContentsDatas = res.data;
         this.nowItem = "";
         this.dialogShow = true;
-        console.log(this.NursingContentsDatas);
+        // this.NursingContentsDatas[this.nowPage - 1][
+        //   this.collapValue
+        // ].imgsrcarr = {};
+        for (
+          let a = 0;
+          a <
+          this.NursingContentsDatas[this.nowPage - 1][this.collapValue].length;
+          a++
+        ) {
+          if (
+            typeof this.NursingContentsDatas[this.nowPage - 1][
+              this.collapValue
+            ][a].imgsrc !== "undefined"
+          ) {
+            let obj = this.NursingContentsDatas[this.nowPage - 1][
+              this.collapValue
+            ][a].imgsrc.split(",");
+            this.NursingContentsDatas[this.nowPage - 1][this.collapValue][
+              a
+            ].imgsrcarr = Object.values(obj);
+            console.log(
+              this.NursingContentsDatas[this.nowPage - 1][this.collapValue][a]
+                .imgsrcarr
+            );
+          }
+        }
       });
       // (async function getAddRouters() {
       //   let personData = await that.$ajax.post(url, formData("person"));
@@ -317,6 +361,16 @@ export default {
   top: 50%;
   margin-top: -16px;
 }
+.note_textboth {
+  margin-left: 20px;
+  color: #909399;
+  display: inline-block;
+  padding: 10px 10px 0 10px;
+  height: 90px;
+  overflow-y: auto;
+  border: 1px solid #ebeef5;
+  width: calc(100% - 150px);
+}
 .note_text {
   margin-left: 20px;
   color: #909399;
@@ -324,8 +378,8 @@ export default {
   padding: 10px 10px 0 10px;
   height: 90px;
   overflow-y: auto;
-  width: calc(100% - 160px);
   border: 1px solid #ebeef5;
+  width: calc(100% - 100px);
 }
 .content_s {
   color: #606266;

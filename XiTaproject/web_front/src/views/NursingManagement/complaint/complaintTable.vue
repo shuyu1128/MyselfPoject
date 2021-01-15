@@ -143,6 +143,12 @@ export default {
         .then((res) => {
           this.detailsForm = res.data;
           this.dialogVisible = true;
+          console.log(this.detailsForm);
+          if (typeof this.detailsForm.imgsrc !== "undefined") {
+            let obj = this.detailsForm.imgsrc.split(",");
+            this.detailsForm.imgsrcarr = Object.values(obj);
+            console.log(this.detailsForm.imgsrcarr);
+          }
         });
     },
     getTableData() {

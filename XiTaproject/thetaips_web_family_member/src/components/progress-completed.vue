@@ -49,10 +49,12 @@
         <van-row>
           <van-col v-if="isPicture == '是'" span="20">
             <van-image
-              style="margin: 12px 0 26px 0px;"
-              width="180"
-              height="240"
-              :src="getsrc(imgsrc)"
+              v-for="(item , index) in this.imgsrcarr"
+              :key="index"
+              style="margin: 12px 5px 26px 0px;"
+              width="100"
+              height="100"
+              :src="getsrc(item)"
             />
           </van-col>
           <van-col style="height:60px" span="4">
@@ -103,6 +105,7 @@ export default {
     type: "",
     nursingid: "",
     id: "",
+    imgsrcarr:[],
   },
   methods: {
     getsrc(src) {
@@ -141,6 +144,9 @@ export default {
 }
 .progress_style .van-step--vertical:first-child::before {
   z-index: 0;
+}
+.van-col--20 {
+    width: 148.333333%;
 }
 </style>
 <style scoped>
