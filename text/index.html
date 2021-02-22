@@ -8,6 +8,7 @@
     .nav-item:last-of-type {
         border-right: none;
     }
+
     /* 公司Logo */
     .ravelry {
         display: inline-block;
@@ -16,13 +17,46 @@
         background: url("./images/logo.png") no-repeat;
         background-size: 100% 100%;
     }
+
     /* 主页背景墙 */
     .container-bannner-img {
         background: url("./images/.jpg") no-repeat;
         background-size: 100% 100%;
     }
-    .header-right{
+
+    .rightBtn {
+        border-radius: 20%;
         float: right;
+        color: white;
+        background-color: blueviolet;
+        border:2px solid blueviolet;
+    }
+
+    .commonbox {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        border: 2px solid red;
+        border-radius: 50%;
+        line-height: 100px;
+        float: right;
+        margin-left: 5px ;
+        margin-top: 5px;
+    }
+
+    .weixin{
+        position: absolute;
+        transform: translate(60%,160%);
+    }
+
+    .weibo{
+        position: absolute;
+        transform: translate(270%,160%);
+    }
+
+    .sosuo{
+        position: absolute;
+        transform: translate(480%,160%);
     }
 </style>
 
@@ -50,8 +84,8 @@
     <div class="main-content" id="home">
         <header class="py-1">
             <!-- 居中 -->
-            <div  class="container">
-                <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light" style="height: 100px;">
                     <h1>
                         <a class="navbar-brand" href="index.html"><i class="ravelry"></i></a>
                     </h1>
@@ -74,10 +108,30 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="header-right">
-                        <button>English</button>
-                        
+                    <div style="width: 33%;">
+
                     </div>
+                    <div>
+                        <div style="width: 100px">
+                            <button class="rightBtn">English</button>
+                        </div>
+                        <div>
+                            <div class="commonbox"></div>
+                            <div class="commonbox"></div>
+                            <div class="commonbox"></div>
+                        </div>
+                        <div class="weixin">
+                            <span>12</span>
+                        </div>
+                        <div class="weibo">
+                            <span>13</span>
+                        </div>
+                        <div class="sosuo">
+                            <span>14</span>
+                        </div>
+                    </div>
+                    
+                    
                 </nav>
             </div>
         </header>
