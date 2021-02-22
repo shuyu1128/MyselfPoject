@@ -8,6 +8,22 @@
     .nav-item:last-of-type {
         border-right: none;
     }
+    /* 公司Logo */
+    .ravelry {
+        display: inline-block;
+        width: 109px;
+        height: 33px;
+        background: url("./images/logo.png") no-repeat;
+        background-size: 100% 100%;
+    }
+    /* 主页背景墙 */
+    .container-bannner-img {
+        background: url("./images/.jpg") no-repeat;
+        background-size: 100% 100%;
+    }
+    .header-right{
+        float: right;
+    }
 </style>
 
 <head>
@@ -31,12 +47,13 @@
 </head>
 
 <body>
-    <div>
-        <header>
-            <div>
-                <nav>
+    <div class="main-content" id="home">
+        <header class="py-1">
+            <!-- 居中 -->
+            <div  class="container">
+                <nav class="navbar navbar-expand-lg navbar-light">
                     <h1>
-                        <a href=""></a>
+                        <a class="navbar-brand" href="index.html"><i class="ravelry"></i></a>
                     </h1>
                     <div>
                         <ul class="navbar-nav ml-4">
@@ -57,9 +74,24 @@
                             </li>
                         </ul>
                     </div>
+                    <div class="header-right">
+                        <button>English</button>
+                        
+                    </div>
                 </nav>
             </div>
         </header>
+        <section class="banner-w3layouts container-bannner-img">
+            <div class="container ">
+                <div class="row banner-w3layouts-grids">
+                    <div class="col-lg-8 banner-w3layouts-info">
+                        <h3 class="mb-1" data-aos="fade-up">先进组网 <span>|</span> 室内定位 <span>|</span> 全面保障</h3>
+                        <p class="mb-5" data-aos="fade-up" style="font-size: 22px;"> 智慧养老解决方案</p>
+                        <a href="#jianjie" class="btn">了解更多</a>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 </body>
 
