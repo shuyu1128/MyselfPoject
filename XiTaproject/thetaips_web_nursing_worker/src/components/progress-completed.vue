@@ -1,0 +1,208 @@
+<template>
+  <div class="progress_style">
+    <van-action-sheet
+      v-model="show"
+      :actions="actions"
+      cancel-text="取消"
+      @select="onSelect"
+      close-on-click-action
+    />
+    <div
+      data-v-793acac2=""
+      class="van-hairline van-step van-step--vertical van-step--process"
+    >
+      <div class="van-step__title van-step__title--active">
+        <p data-v-793acac2="" style="color: #1989fa">{{ nursingcontents }}</p>
+        <div class="text_style">
+          <van-row
+            style="margin-bottom: 6px"
+            type="flex"
+            justify="space-between"
+          >
+            <van-col span="16">
+              <div v-if="lastTime != null">
+                <span
+                  >上次更新时间：{{ lastTime == "" ? "无" : lastTime }}</span
+                >
+              </div>
+              <div v-else>
+                <span style="margin-right: 16px"
+                  >开始时间：{{ begintime }}</span
+                >
+                <span>结束时间：{{ endtime }}</span>
+              </div>
+            </van-col>
+            <van-col span="6" style="text-align: right">
+              <span>
+                <van-icon name="manager" class="manager_style" />
+                {{ nowPeople.fullname }}
+              </span>
+            </van-col>
+          </van-row>
+          <van-row type="flex" justify="space-between">
+            <van-col span="24">
+              <span>备注：{{ nursingdesc }}</span>
+            </van-col>
+          </van-row>
+        </div>
+        <div style="min-height: 48px; margin-bottom: 16px">
+          <van-field
+            v-if="istext == '是'"
+            v-model="message"
+            rows="2"
+            autosize
+            label="反馈"
+            type="textarea"
+            maxlength="50"
+            placeholder="请输入反馈"
+            show-word-limit
+          />
+        </div>
+        <van-row style="min-height: 48px">
+          <van-col span="20">
+            <div v-if="ispicture == '是'">
+              <van-image v-if="imgsrc" width="180" height="240" :src="imgsrc" />
+              <van-uploader
+                v-else
+                class="uploader_style"
+                :after-read="afterRead"
+              />
+            </div>
+          </van-col>
+          <van-col :style="{ height: 0 + 'px' }" span="4">
+            <van-button
+              round
+              size="small"
+              class="warning_btn"
+              type="info"
+              @click="show = true"
+              icon="success"
+            >
+              提交
+            </van-button>
+          </van-col>
+        </van-row>
+      </div>
+      <div class="van-step__circle-container">
+        <i
+          style="color: #1989fa"
+          class="van-icon van-icon-checked van-step__icon van-step__icon--active"
+        >
+        </i>
+      </div>
+      <div class="van-step__line"></div>
+    </div>
+  </div>
+</template>
+
+<script>
+import { Toast } from "vant";
+import axios from "axios";
+export default {
+  data() {
+    return {
+      message: "",
+      show: false,
+      actions: [{ name: "确定" }],
+      // 上传成功返回文件id
+      fileId: "",
+      imgsrc: false,
+    };
+  },
+  props: {
+    nursingcontents: "",
+    nursingdesc: "",
+    lastTime: "",
+    begintime: "",
+    endtime: "",
+    ispicture: "",
+    istext: "",
+    id: "",
+    type: "",
+  },
+  computed: {
+    // 当前查看长者
+    nowPeople() {
+      return this.$store.state.nowPeople;
+    },
+  },
+  methods: {
+    afterRead(file) {
+      let formData = new FormData();
+      formData.append("file", file.file);
+      axios
+        .post(
+          process.env.VUE_APP_URL +
+            "/nursing/nursingContents/uploadNursingContentsFile",
+          formData,
+          { "Content-Type": "multipart/form-data" }
+        )
+        .then((res) => {
+          if (this.$globalMethod.ifTips(res.data)) {
+            this.fileId = res.data.fileid;
+            this.imgsrc = process.env.VUE_APP_URL + res.data.imgsrc;
+          }
+        });
+    },
+    onSelect(item) {
+      // 判断是否打卡
+      if (this.message == "" && this.istext == "是") {
+        Toast.fail({
+          message: `请输入反馈`,
+          position: `bottom`,
+        });
+      } else if (this.fileId == "" && this.ispicture == "是") {
+        Toast.fail({
+          message: `请上传 jpg 格式图片`,
+          position: `bottom`,
+        });
+      } else {
+        let data = {
+          mmMaterialusagedetailsPOList: [],
+          feedback: this.istext == "是" ? this.message : "",
+          fileid: this.ispicture == "是" ? this.fileId : "",
+          nursingContentsid: this.id,
+          type: this.type,
+          personid: this.type == "team" ? "" : this.nowPeople.personid,
+        };
+        this.$http.completeNursingContents(data).then((res) => {
+          if (this.$globalMethod.ifTips(res.data)) this.$emit("submitSuccess");
+        });
+      }
+    },
+  },
+};
+</script>
+<style>
+.progress_style .van-step--vertical .van-step__circle-container {
+  z-index: 0;
+}
+.progress_style .van-step--vertical:first-child::before {
+  z-index: 0;
+}
+</style>
+<style scoped>
+.progress_style {
+  border-bottom: 1px solid #f5f6f7;
+}
+.manager_style {
+  position: relative;
+  top: 1px;
+}
+.uploader_style {
+  margin-top: 26px;
+}
+.warning_btn {
+  position: absolute;
+  bottom: 12px;
+  right: 0px;
+}
+.text_style {
+  color: #969799;
+  overflow: hidden;
+  line-height: 16px;
+  margin-bottom: 6px;
+  font-size: 12px;
+  margin-top: 10px;
+}
+</style>

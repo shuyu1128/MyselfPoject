@@ -1,0 +1,10 @@
+import http from '../utils/http'
+// let resquest = process.env.VUE_APP_URL
+
+// 请求
+export default {
+  // 登录
+  doLogin(params) {
+    return http.post(`family/sysFamilyUser/doLogin`, params)
+  }
+}

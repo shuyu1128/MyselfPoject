@@ -1,0 +1,233 @@
+<template>
+  <div class="complaint_details">
+    <el-row style="margin-bottom: 16px">
+      <el-col :span="12">
+        <div class="details_left">
+          <li class="details_list">
+            <span class="details_list_title">家属姓名：</span>
+            <span class="details_list_content">
+              {{ detailsForm.familyname }}
+            </span>
+          </li>
+          <li class="details_list">
+            <span class="details_list_title">家属联系方式：</span>
+            <span class="details_list_content">
+              {{ detailsForm.familyphone }}
+            </span>
+          </li>
+          <li class="details_list">
+            <span class="details_list_title">护工姓名：</span>
+            <span class="details_list_content">
+              {{ detailsForm.nursingname }}
+            </span>
+          </li>
+          <li class="details_list">
+            <span class="details_list_title">护工联系方式：</span>
+            <span class="details_list_content">{{
+              detailsForm.nursingphone
+            }}</span>
+          </li>
+          <li v-if="detailsForm.nursingType != 'public'" class="details_list">
+            <span class="details_list_title">长者姓名：</span>
+            <span class="details_list_content">{{ detailsForm.fullname }}</span>
+          </li>
+          <li class="details_list">
+            <span class="details_list_title">投诉时间：</span>
+            <span class="details_list_content">
+              {{ $allMethods.formatTimeStamp(detailsForm.createdtime, "Y-M-D h:m") }}
+            </span>
+          </li>
+        </div>
+      </el-col>
+      <el-col :span="12">
+        <div class="details_right">
+          <p class="complaint_tile">投诉内容：</p>
+          <div class="complaint_content">
+            {{ detailsForm.complaintContent }}
+          </div>
+        </div>
+      </el-col>
+    </el-row>
+
+    <el-collapse style="margin-bottom: 16px" accordion v-model="nowItem">
+      <el-collapse-item :name="'1'">
+        <template slot="title">
+          <div class="nursing_list">
+            <i
+              v-if="compareTime(detailsForm.overTime, detailsForm.endTime)"
+              class="el-icon-check"
+              style="color: #67c23a"
+            ></i>
+            <i
+              v-if="!compareTime(detailsForm.overTime, detailsForm.endTime)"
+              class="fa fa-history"
+              style="color: #e6a23c"
+            ></i>
+            <span style="margin-right: 10px">
+              护理内容：<span class="content_s">
+                {{ detailsForm.nursingContents }}
+              </span>
+            </span>
+            <span style="margin-right: 10px">
+              备注：<span class="content_s">{{ detailsForm.nursingDesc }}</span>
+            </span>
+            <el-tag
+              v-if="detailsForm.state == 1"
+              class="state_tag"
+              type="success"
+            >
+              已通过
+            </el-tag>
+            <el-tag
+              v-if="detailsForm.state == 2"
+              class="state_tag"
+              type="warning"
+            >
+              未通过
+            </el-tag>
+            <el-tag
+              v-if="detailsForm.state == 0"
+              class="state_tag"
+              type="danger"
+            >
+              未审批
+            </el-tag>
+          </div>
+        </template>
+        <div>
+          <el-image
+            v-if="detailsForm.isPicture == '是'"
+            style="width: 100px; height: 100px"
+            :src="detailsForm.imgsrc"
+            :preview-src-list="[detailsForm.imgsrc]"
+          >
+          </el-image>
+          <div v-if="detailsForm.isText == '是'" class="note_text">
+            {{ detailsForm.feedback }}
+          </div>
+        </div>
+      </el-collapse-item>
+    </el-collapse>
+    <div class="details_right" v-if="detailsForm.complaintstate == '1'">
+      <p class="complaint_tile">投诉评审结果：</p>
+      <div class="complaint_content">
+        {{ detailsForm.complaintResults }}
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      nowItem: "1",
+      //   detailsForm: {
+      //     id: "1",
+      //     overTime: "",
+      //     endTime: "",
+      //     nursingContents: "",
+      //     nursingDesc: "",
+      //     state: "1",
+      //     isPicture: "是",
+      //     imgsrc: "",
+      //     isText: "是",
+      //     feedback: "sss",
+      //     // 投诉状态
+      //     complaintstate: "",
+      //     // 投诉内容
+      //     complaintContent: "自己找原因！自己找原因！自己找原因！自己找原因！",
+      //     // 投诉评审结果
+      //     complaintResults: "无结果",
+      //     // 投诉时间
+      //     createdtime: "2020-20-02",
+      //     // 家属姓名
+      //     familyname: "周查",
+      //     // 家属联系方式
+      //     familyphone: "13091443416",
+      //     // 护工姓名
+      //     nursingname: "李王",
+      //     // 护工联系方式
+      //     nursingphone: "13746899900",
+      //     // 长者姓名
+      //     fullname: "张项",
+      //     nursingType: "public"
+      //   }
+    };
+  },
+  props: {
+    detailsForm: null,
+  },
+  methods: {
+    // 时间戳与时间点比较
+    compareTime(timeStamp, timePoint) {
+      let newDate = new Date(timeStamp);
+      let timeArr = timePoint.split(":");
+      let pointHour = Number(timeArr[0]);
+      let pointMinut = Number(timeArr[1]);
+      let hour = newDate.getHours();
+      let Minut = newDate.getMinutes();
+      if (pointHour == hour && pointMinut == Minut) {
+        return true;
+      } else if (pointHour == hour) {
+        if (pointMinut > Minut) {
+          return true;
+        } else if (pointMinut < Minut) {
+          return false;
+        }
+      } else if (pointHour > hour) {
+        return true;
+      } else if (pointHour < hour) {
+        return false;
+      }
+    },
+  },
+};
+</script>
+
+<style scoped>
+.complaint_content {
+  text-indent: 26px;
+  height: 100px;
+  overflow-y: auto;
+  color: #606266;
+}
+.complaint_tile {
+  font-weight: bold;
+  color: #303133;
+}
+.details_list_title {
+  font-weight: bold;
+  color: #303133;
+}
+.details_list_content {
+  color: #606266;
+}
+.nursing_list {
+  position: relative;
+  width: 100%;
+}
+.state_tag {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  margin-top: -16px;
+}
+.note_text {
+  margin-left: 20px;
+  color: #909399;
+  display: inline-block;
+  padding: 10px 10px 0 10px;
+  height: 90px;
+  overflow-y: auto;
+  width: calc(100% - 160px);
+  border: 1px solid #ebeef5;
+}
+.content_s {
+  color: #606266;
+}
+.nursing_list_footer {
+  padding: 16px 16px 0 0;
+  overflow: hidden;
+}
+</style>

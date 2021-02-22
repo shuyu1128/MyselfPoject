@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    .nav-item {
+        border-right: 2px solid #fff;
+    }
+
+    .nav-item:last-of-type {
+        border-right: none;
+    }
+
+    /* 公司Logo */
+    .ravelry {
+        display: inline-block;
+        width: 109px;
+        height: 33px;
+        background: url("./images/logo.png") no-repeat;
+        background-size: 100% 100%;
+    }
+
+    /* 主页背景墙 */
+    .container-bannner-img {
+        background: url("./images/.jpg") no-repeat;
+        background-size: 100% 100%;
+    }
+
+    .rightBtn {
+        border-radius: 20%;
+        float: right;
+        color: white;
+        background-color: blueviolet;
+        border:2px solid blueviolet;
+    }
+
+    .commonbox {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        border: 2px solid red;
+        border-radius: 50%;
+        line-height: 100px;
+        float: right;
+        margin-left: 5px ;
+        margin-top: 5px;
+    }
+
+    .weixin{
+        position: absolute;
+        transform: translate(60%,160%);
+    }
+
+    .weibo{
+        position: absolute;
+        transform: translate(270%,160%);
+    }
+
+    .sosuo{
+        position: absolute;
+        transform: translate(480%,160%);
+    }
+</style>
+
+<head>
+    <!-- 网页标题 -->
+    <link rel="icon" href="">
+    <title>科技</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script>
+        // 浏览器滚动缓存功能 （由A页面到B页面）谷歌浏览器自带 但是可能在某些特殊场景不适用 所以会出现下述代码。
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+        //返回该页面跳转坐标（0，1）坐标
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+</head>
+
+<body>
+    <div class="main-content" id="home">
+        <header class="py-1">
+            <!-- 居中 -->
+            <div class="container">
+                <nav class="navbar navbar-expand-lg navbar-light" style="height: 100px;">
+                    <h1>
+                        <a class="navbar-brand" href="index.html"><i class="ravelry"></i></a>
+                    </h1>
+                    <div>
+                        <ul class="navbar-nav ml-4">
+                            <li class="nav-item">
+                                <a class="nav-link" href="javascript:;" navTo="shouye">首页</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="javascript:;" navTo="guanyu">关于我们</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="javascript:;" navTo="xinwen">新闻与公告</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="javascript:;" navTo="yanjiu">研究项目</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="javascript:;" navTo="jiaru">加入我们</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div style="width: 33%;">
+
+                    </div>
+                    <div>
+                        <div style="width: 100px">
+                            <button class="rightBtn">English</button>
+                        </div>
+                        <div>
+                            <div class="commonbox"></div>
+                            <div class="commonbox"></div>
+                            <div class="commonbox"></div>
+                        </div>
+                        <div class="weixin">
+                            <span>12</span>
+                        </div>
+                        <div class="weibo">
+                            <span>13</span>
+                        </div>
+                        <div class="sosuo">
+                            <span>14</span>
+                        </div>
+                    </div>
+                    
+                    
+                </nav>
+            </div>
+        </header>
+        <section class="banner-w3layouts container-bannner-img">
+            <div class="container ">
+                <div class="row banner-w3layouts-grids">
+                    <div class="col-lg-8 banner-w3layouts-info">
+                        <h3 class="mb-1" data-aos="fade-up">先进组网 <span>|</span> 室内定位 <span>|</span> 全面保障</h3>
+                        <p class="mb-5" data-aos="fade-up" style="font-size: 22px;"> 智慧养老解决方案</p>
+                        <a href="#jianjie" class="btn">了解更多</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+</html>

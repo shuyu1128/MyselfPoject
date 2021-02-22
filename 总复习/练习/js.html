@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = [1,2,3];
+        console.log(Array.isArray (a));
+        console.log(a instanceof Array);
+        console.log(a.constructor == Array);
+
+        function Person ( name , age ){
+            this.name = name;
+            this.age = age;
+        }
+        Person.prototype.say = function(){
+            console.log(this.name+"haha");
+        }
+
+        function Coder( name , age ){
+            Person.call( this , name , age )
+        }
+        Coder.prototype = new Person;
+        Coder.prototype.constructor = Coder;
+        var c1 = new Coder("zhangsan",45);
+        
+        // console.log(c1.name,c1.age,c1.say);
+        c1.say();
+        
+    </script>
+</body>
+</html>
