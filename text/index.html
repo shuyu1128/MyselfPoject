@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+    .nav-item {
+        border-right: 2px solid #fff;
+    }
+
+    .nav-item:last-of-type {
+        border-right: none;
+    }
+</style>
+
+<head>
+    <!-- 网页标题 -->
+    <link rel="icon" href="">
+    <title>科技</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        // 浏览器滚动缓存功能 （由A页面到B页面）谷歌浏览器自带 但是可能在某些特殊场景不适用 所以会出现下述代码。
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+        //返回该页面跳转坐标（0，1）坐标
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        <header>
+            <div>
+                <nav>
+                    <h1>
+                        <a href=""></a>
+                    </h1>
+                    <div>
+                        <ul>
+                            <li class="nav-item">
+                                <a class="nav-link" href="javascript:;" navTo="shouye">首页</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="javascript:;" navTo="guanyu">关于我们</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="javascript:;" navTo="xinwen">新闻与公告</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="javascript:;" navTo="yanjiu">研究项目</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="javascript:;" navTo="jiaru">加入我们</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+    </div>
+</body>
+
+</html>
