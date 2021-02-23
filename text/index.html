@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <style>
+    * {
+        text-decoration: none;
+    }
+
     .nav-item {
         border-right: 2px solid #fff;
     }
@@ -12,10 +16,19 @@
     /* 公司Logo */
     .ravelry {
         display: inline-block;
-        width: 109px;
+        width: 15%;
         height: 33px;
-        background: url("./images/LOGO.jpg") no-repeat;
+        /* background: url("./images/LOGO.jpg") no-repeat; */
         background-size: 100% 100%;
+    }
+
+    .header {
+        -webkit-box-shadow: 0 0.15rem 0.1rem 0 rgb(0 0 0 / 5%);
+        box-shadow: 0 0.15rem 0.1rem 0 rgb(0 0 0 / 5%);
+        position: fixed;
+        width: 100%;
+        z-index: 99;
+        background: #fff;
     }
 
     /* 主页背景墙 */
@@ -47,17 +60,17 @@
 
     .weixin {
         position: absolute;
-        transform: translate(60%, 160%);
+        transform: translate(70%, -100%);
     }
 
     .weibo {
         position: absolute;
-        transform: translate(270%, 160%);
+        transform: translate(290%, -100%);
     }
 
     .sosuo {
         position: absolute;
-        transform: translate(470%, 160%);
+        transform: translate(510%, -100%);
     }
 
     .header-background {
@@ -66,10 +79,298 @@
         align-items: center;
     }
 
-    .header-backgroudtext{
+    .header-backgroudtext {
         color: #fff;
         position: absolute;
-        transform: translateY(50%);
+        transform: translate(0, 70%);
+    }
+
+    /* 新闻通知 */
+    .news-information-box {
+        display: flex;
+        margin-top: 100px;
+        height: 500px;
+    }
+
+    /* 新闻 */
+    .news-box {
+        width: 45%;
+        height: 300px;
+        display: inline-block;
+    }
+
+    .news-box-line {
+        width: 27%;
+        height: 0px;
+        border: 1px solid red;
+        margin-top: 10px;
+    }
+
+    .news-box-header {
+        height: 100%;
+        border-bottom: 0.5px solid rgba(226, 223, 219, 0.849);
+    }
+
+    .news-box-headerTitle {
+        display: flex;
+    }
+
+    .newsPic {
+        margin-right: 2%;
+    }
+
+    .news-main1 {
+        margin-top: 40px;
+        display: flex;
+    }
+
+    .news-main2 {
+        margin-top: 40px;
+        display: flex;
+    }
+
+    .news-main-pic {
+        width: 35%;
+        height: 130px;
+    }
+
+    .news-main-box {
+        margin-left: 30px;
+        width: 70%;
+        height: 130px;
+    }
+
+    .news-p {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .news-p1 {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .news-main-h1 {
+        margin: 0;
+    }
+
+    .news-main-p {
+        font-size: 12px;
+    }
+
+    .news-a a {
+        color: rgba(7, 7, 7, 0.945);
+    }
+
+    .news-a a:hover {
+        color: rgb(196, 4, 4);
+        text-decoration: none;
+    }
+
+    /* 通知 */
+    .information-box {
+        width: 45%;
+        height: 300px;
+        display: inline-block;
+        margin-left: 10%;
+    }
+
+    .information-box-header {
+        border-bottom: 0.5px solid rgba(226, 223, 219, 0.849);
+    }
+
+    .information-box-headerTitle {
+        display: flex;
+    }
+
+    .information-box-line {
+        width: 27%;
+        height: 0px;
+        border: 1px solid blue;
+        margin-top: 10px;
+    }
+
+    .inforPic {
+        margin-right: 2%;
+    }
+
+    .inforData {
+        /* width: 100px; */
+        height: 20px;
+        text-align: center;
+        background: rgba(110, 97, 97, 0.527);
+        border-radius: 10px;
+        font-size: 8px;
+        padding: 0 10px;
+        margin-right: 20px;
+    }
+
+    .information-main1 {
+        display: flex;
+        margin-top: 40px;
+    }
+
+    .inforP1 {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .inforP2 {
+        width: 200px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .information-main a {
+        color: rgba(7, 7, 7, 0.945);
+    }
+
+    .information-main a:hover {
+        color: rgba(233, 12, 12, 0.945);
+        text-decoration: none;
+    }
+
+    /* 轮播图 */
+    .carouselMap {
+        height: 500px;
+        margin-top: 50px;
+    }
+
+    #carouselmapBox {
+        width: 1200px;
+        height: 400px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    /* 居中 */
+    .carouselmap-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #imgBox {
+        width: 4000px;
+        height: 400px;
+        text-align: center;
+        /* 去除图片缝隙 */
+        font-size: 0;
+        margin-top: 40px;
+        z-index: 1;
+        position: absolute;
+    }
+
+    #imgBox img {
+        text-align: center;
+    }
+
+    #buttons {
+        position: absolute;
+        height: 10px;
+        width: 136px;
+        z-index: 2;
+        bottom: 2px;
+        left: 100px;
+    }
+
+    #buttons span {
+        cursor: pointer;
+        float: left;
+        border: 1px solid #fff;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #333;
+        margin-right: 5px;
+    }
+
+    #buttons .on {
+        background: orangered;
+    }
+
+    .arrow {
+        cursor: pointer;
+        display: none;
+        line-height: 20px;
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        z-index: 2;
+        top: 30px;
+        background-color: RGBA(0, 0, 0, .3);
+        color: #fff;
+    }
+
+    .arrow:hover {
+        background-color: RGBA(0, 0, 0, .7);
+    }
+
+    #carouselmapBox:hover .arrow {
+        display: block;
+    }
+
+    #prev {
+        left: 5px;
+    }
+
+    #next {
+        right: 5px;
+    }
+
+    .carouselmap-box-pic {
+        width: 200px;
+        height: 400px;
+    }
+
+    .btn {
+        font-size: 20px;
+    }
+
+    .circle {
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        border: 1px solid #000;
+        border-radius: 50%;
+        line-height: 100px;
+        float: right;
+        margin-left: 5px;
+        margin-top: 5px;
+    }
+
+    .circle1 {
+        position: absolute;
+        transform: translate(1470%, -103%);
+    }
+
+    .circle2 {
+        position: absolute;
+        transform: translate(1780%, -103%);
+    }
+
+    .blackpoint {
+        display: inline-block;
+        width: 3px;
+        height: 3px;
+        border-radius: 50%;
+        border: 3px solid #000;
+        margin: 0 10px;
     }
 </style>
 
@@ -95,11 +396,11 @@
 
 <body>
     <div class="main-content" id="home">
-        <header class="py-1">
+        <header class="py-1 header">
             <!-- 居中 -->
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-light" style="height: 100px;">
-                    <h1>
+                    <h1 style="width:20%">
                         <a class="navbar-brand" href="index.html"><i class="ravelry"></i></a>
                     </h1>
                     <div>
@@ -121,26 +422,26 @@
                             </li>
                         </ul>
                     </div>
-                    <div style="width: 33%;">
+                    <div style="width: 31%;">
 
                     </div>
                     <div>
-                        <div style="width: 100px">
+                        <div style="width: 105px;height: 30px;">
                             <button class="rightBtn">English</button>
                         </div>
-                        <div>
+                        <div style="width: 105px;height: 30px;">
                             <div class="commonbox"></div>
                             <div class="commonbox"></div>
                             <div class="commonbox"></div>
                         </div>
                         <div class="weixin">
-                            <span>12</span>
+                            <a href="https://wx.qq.com/"><img src="./images/weixin.png" alt=""></a>
                         </div>
                         <div class="weibo">
-                            <span>13</span>
+                            <a href="https://wx.qq.com/"><img src="./images/weibo.png" alt=""></a>
                         </div>
                         <div class="sosuo">
-                            <span>14</span>
+                            <a href="https://wx.qq.com/"><img src="./images/sousuo.png" alt=""></a>
                         </div>
                     </div>
 
@@ -161,7 +462,334 @@
                 </div>
             </div>
         </section>
+        <div class="news-information-box container">
+            <div class="news-box">
+                <div>
+                    <div class="news-box-header">
+                        <div class="news-box-headerTitle">
+                            <img class="newsPic" src="./images/news.png" alt="">
+                            <h4 style="margin: 0;">新闻动态</h4>
+                        </div>
+                        <div class="news-box-line"></div>
+                    </div>
+                    <div class="news-main">
+                        <div class="news-main1">
+                            <img src="./images/communication-4871187.jpg" alt="" class="news-main-pic">
+                            <div class="news-main-box">
+                                <div class="news-a">
+                                    <a href="">
+                                        <p style="font-size: 18px;" class="news-pTitle">基于中国综合社会调查（CGSS）数据产出的学术成果再创新高
+                                        </p>
+                                    </a>
+                                </div>
+                                <div>
+                                    <p style="font-size: 10px;" class="news-p">
+                                        什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="news-main2">
+                            <div style="width:20%">
+                                <div>
+                                    <h1 class="news-main-h1">26</h1>
+                                    <p class="news-main-p">2019.07</p>
+                                </div>
+                            </div>
+                            <div style="margin-left:20px;">
+                                <div class="news-a">
+                                    <a href="">
+                                        <p style="font-size: 18px;margin: 0;">国家自然科学基金什么什么中心群网</p>
+                                    </a>
+                                </div>
+                                <div>
+                                    <p style="font-size: 10px;" class="news-p1">
+                                        什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="news-main2">
+                            <div style="width:20%">
+                                <div>
+                                    <h1 class="news-main-h1">20</h1>
+                                    <p class="news-main-p">2019.07</p>
+                                </div>
+                            </div>
+                            <div style="margin-left:20px;">
+                                <div class="news-a">
+                                    <a href="">
+                                        <p style="font-size: 18px;margin: 0;">中国发展指数（2018）版</p>
+                                    </a>
+                                </div>
+                                <div>
+                                    <p style="font-size: 10px;" class="news-p1">
+                                        什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是大数据？什么是
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="information-box">
+                <div>
+                    <div class="information-box-header">
+                        <div class="information-box-headerTitle">
+                            <img class="inforPic" src="./images/information.png" alt="">
+                            <h4 style="margin: 0;">通知公告</h4>
+                        </div>
+                        <div class="information-box-line"></div>
+                    </div>
+                    <div class="information-main">
+                        <div>
+                            <a href="" class="information-main1">
+                                <div class="inforData">
+                                    <p>2019.07.19</p>
+                                </div>
+                                <div>
+                                    <h5 style="font-size: 12px;" class="inforP1">
+                                        中国调查与数据中心研究方法系列讲座————中国城市居民的主观社会地位与污染规避打了打拉到拉到拉拉队辣斗辣了大量的拉动拉拉了大量的拉动拉拉了大量的拉动拉拉了大量的拉动拉拉了大量的拉动拉拉了大量的拉动拉拉了大量的拉动拉拉
+                                    </h5>
+                                </div>
+                            </a>
+
+                        </div>
+                        <div>
+                            <a href="" class="information-main1">
+                                <div class="inforData">
+                                    <p>2019.07.19</p>
+                                </div>
+                                <div>
+                                    <h5 style="font-size: 12px;" class="inforP2">
+                                        中国调查与数据中心研究方法系列讲座————中国城市居民的主观社会地位与污染规避打了打拉到拉到拉拉队辣斗辣了大量的拉动拉拉了大量的拉动拉拉了大量的拉动拉拉了大量的拉动拉拉了大量的拉动拉拉了大量的拉动拉拉了大量的拉动拉拉
+                                    </h5>
+                                </div>
+                            </a>
+
+                        </div>
+                        <div>
+                            <a href="" class="information-main1">
+                                <div class="inforData">
+                                    <p>2019.07.19</p>
+                                </div>
+                                <div>
+                                    <h5 style="font-size: 12px;" class="inforP1">
+                                        中国调查与数据中心研究方法系列讲座————中国城市居民的主观社会地位与污染规避打了打拉到拉到拉拉队辣斗辣了大量的拉动拉拉了大量的拉动拉拉了大量的拉动拉拉了大量的拉动拉拉了大量的拉动拉拉了大量的拉动拉拉了大量的拉动拉拉
+                                    </h5>
+                                </div>
+                            </a>
+
+                        </div>
+                        <div>
+                            <a href="" class="information-main1">
+                                <div class="inforData">
+                                    <p>2019.07.19</p>
+                                </div>
+                                <div>
+                                    <h5 style="font-size: 12px;" class="inforP2">
+                                        中国调查与数据中心研究方法系列讲座————中国城市居民的主观社会地位与污染规避打了打拉到拉到拉拉队辣斗辣了大量的拉动拉拉了大量的拉动拉拉了大量的拉动拉拉了大量的拉动拉拉了大量的拉动拉拉了大量的拉动拉拉了大量的拉动拉拉
+                                    </h5>
+                                </div>
+                            </a>
+
+                        </div>
+                        <div>
+                            <a href="" class="information-main1">
+                                <div class="inforData">
+                                    <p>2019.07.19</p>
+                                </div>
+                                <div>
+                                    <h5 style="font-size: 12px;" class="inforP2">
+                                        中国调查与数据中心研究方法系列讲座————中国城市居民的主观社会地位与污染规避打了打拉到拉到拉拉队辣斗辣了大量的拉动拉拉了大量的拉动拉拉了大量的拉动拉拉了大量的拉动拉拉了大量的拉动拉拉了大量的拉动拉拉了大量的拉动拉拉
+                                    </h5>
+                                </div>
+                            </a>
+                        </div>
+                        <div>
+                            <a href="" class="information-main1">
+                                <div class="inforData">
+                                    <p>2019.07.19</p>
+                                </div>
+                                <div>
+                                    <h5 style="font-size: 12px;" class="inforP1">
+                                        中国调查与数据中心研究方法系列讲座————中国城市居民的主观社会地位与污染规避打了打拉到拉到拉拉队辣斗辣了大量的拉动拉拉了大量的拉动拉拉了大量的拉动拉拉了大量的拉动拉拉了大量的拉动拉拉了大量的拉动拉拉了大量的拉动拉拉
+                                    </h5>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carouselMap">
+            <div class="carouselmap-header">
+                <div style="display: inline-block;">
+                    <img src="./images/news.png" alt="">
+                </div>
+                <div style="display: inline-block;">
+                    <h3 style="margin: 0;">研究项目</h3>
+                </div>
+            </div>
+            <div id="carouselmapBox">
+                <div id="imgBox">
+                    <img src="./images/img4.jpeg" alt="" class="carouselmap-box-pic">
+                    <img src="./images/img5.jpeg" alt="" class="carouselmap-box-pic">
+                    <img src="./images/img6.jpeg" alt="" class="carouselmap-box-pic">
+                    <img src="./images/img1.jpg" alt="" class="carouselmap-box-pic">
+                    <img src="./images/img2.jpeg" alt="" class="carouselmap-box-pic">
+                    <img src="./images/img3.jpeg" alt="" class="carouselmap-box-pic">
+                    <img src="./images/img4.jpeg" alt="" class="carouselmap-box-pic">
+                    <img src="./images/img5.jpeg" alt="" class="carouselmap-box-pic">
+                    <img src="./images/img6.jpeg" alt="" class="carouselmap-box-pic">
+                    <img src="./images/img1.jpg" alt="" class="carouselmap-box-pic">
+                    <img src="./images/img2.jpeg" alt="" class="carouselmap-box-pic">
+                    <img src="./images/img3.jpeg" alt="" class="carouselmap-box-pic">
+                </div>
+                <div id="buttons">
+                    <span index="1" class="on"></span>
+                    <span index="2"></span>
+                    <span index="3"></span>
+                    <span index="4"></span>
+                    <span index="5"></span>
+                    <span index="6" </span>
+                </div>
+                <a href="javascript:;" id="prev" class="arrow">&lt;</a>
+                <a href="javascript:;" id="next" class="arrow">&gt;</a>
+                <!-- <div>
+                    <div style="text-align: center;margin-top: 30px;">
+                        <a href=""><img src="./images/shangyibu.png" alt=""></a>
+                        <div class="blackpoint"></div>
+                        <div class="blackpoint"></div>
+                        <div class="blackpoint"></div>
+                        <a href=""><img src="./images/xiayibu.png" alt=""></a>
+                    </div>
+                    <div class="circle circle1"></div>
+                    <div class="circle circle2"></div>
+                </div> -->
+            </div>
+        </div>
     </div>
 </body>
+<script type="text/javascript">
+
+    window.onload = function () {
+        var carouselmapBox = document.getElementById('carouselmapBox');
+        var imgBox = document.getElementById('imgBox');
+        var buttons = document.getElementById('buttons').getElementsByTagName('span');
+        var prev = document.getElementById('prev');
+        var next = document.getElementById('next');
+        var index = 1;
+        var len = 8;
+        //
+        var animated = false;
+        var interval = 3000;
+        var timer;
+        function animate(offset) {
+            //如果偏移量为0，则不进行轮播
+            if (offset == 0) {
+                return;
+            }
+            animated = true;
+            var time = 300;
+            var inteval = 10;
+            var speed = offset / (time / inteval);
+            var left = parseInt(list.style.left) + offset;
+            //go()函数是开始轮播
+            var go = function () {
+                if ((speed > 0 && parseInt(list.style.left) < left) || (speed < 0 && parseInt(list.style.left) > left)) {
+                    list.style.left = parseInt(list.style.left) + speed + 'px';
+                    setTimeout(go, inteval);
+                }
+                else {
+                    list.style.left = left + 'px';
+                    //如果为第一幅图片，再按<<的按钮，直接跳到最后一个图片
+                    if (left > -80) {
+                        list.style.left = -80 * len + 'px';
+                    }
+                    //如果为最后一幅图片，再按>>的按钮，直接跳到第一个图片
+                    if (left < (-80 * len)) {
+                        list.style.left = '-80px';
+                    }
+                    animated = false;
+                }
+            }
+            go();
+        }
+        //小圆点的设计
+        function showButton() {
+            for (var i = 0; i < buttons.length; i++) {
+                if (buttons[i].className == 'on') {
+                    buttons[i].className = '';
+                    break;
+                }
+            }
+            buttons[index - 1].className = 'on';
+        }
+        //自动播放，设置定时器，相当于没3秒点击>>按钮
+        function play() {
+            timer = setTimeout(function () {
+                next.onclick();
+                play();
+            }, interval);
+        }
+        //清除定时器
+        function stop() {
+            clearTimeout(timer);
+        }
+
+        next.onclick = function () {
+            if (animated) {
+                return;
+            }
+            if (index == 8) {
+                index = 1;
+            }
+            else {
+                index += 1;
+            }
+            animate(-80);
+            showButton();
+        }
+        //点击向前的箭头，执行animate函数，翻页
+        prev.onclick = function () {
+            if (animated) {
+                return;
+            }
+            if (index == 1) {
+                index = 8;
+            }
+            else {
+                index -= 1;
+            }
+            animate(80);
+            showButton();
+        }
+        // 图片滚动，小圆点要相应的变化
+        for (var i = 0; i < buttons.length; i++) {
+            buttons[i].onclick = function () {
+                if (animated) {
+                    return;
+                }
+                if (this.className == 'on') {
+                    return;
+                }
+                var myIndex = parseInt(this.getAttribute('index'));
+                var offset = -80 * (myIndex - index);
+
+                animate(offset);
+                index = myIndex;
+                showButton();
+            }
+        }
+        //鼠标放到轮播图上，动画停止
+        container.onmouseover = stop;
+        //鼠标移开，动画开始
+        container.onmouseout = play;
+
+        play();
+
+    }
+</script>
 
 </html>
