@@ -1,0 +1,71 @@
+<!--
+ * @Author: pjl
+ * @Date: 2021-03-17 13:19:20
+ * @LastEditors: sy
+ * @LastEditTime: 2021-03-19 09:08:12
+ * @Description: 主页
+-->
+<template>
+  <div>
+    <div style="width: 100%">
+      <carouselMap />
+    </div>
+
+    <div class="com_1 dynamic">
+      <dynamic />
+    </div>
+
+    <div class="com_1 mainTeam">
+      <mainTeam />
+    </div>
+  </div>
+</template>
+
+<script>
+import carouselMap from "./carouselmap";
+import dynamic from "./dynamic";
+import mainTeam from "./mainteam";
+
+export default {
+  data() {
+    return {};
+  },
+  components: {
+    carouselMap,
+    dynamic,
+    mainTeam,
+  },
+};
+</script>
+
+<style>
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html,
+ul,
+li,
+div,
+span {
+  padding: 0;
+  margin: 0;
+}
+ul,
+li {
+  list-style: none;
+}
+.com_1 {
+  width: 1150px;
+  margin: 0 auto;
+  /* padding-left: 10px; */
+}
+
+.dynamic {
+  padding-top: 70px;
+  padding-bottom: 45px;
+  padding-left: 10px;
+}
+</style>

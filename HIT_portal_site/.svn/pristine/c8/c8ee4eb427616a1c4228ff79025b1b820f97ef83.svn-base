@@ -1,0 +1,41 @@
+@charset "utf-8";/*CSS Author:http://www.ihtml.cn*/
+/* 全部 */
+body{background-color:#eee;}
+.wrap{width:974px;overflow:hidden;margin:0 auto;}
+
+/* ----------头 */
+#header{ background-color:#81358c; height:80px; width:100%;}
+#head_logo a{ display:block; width:100%; height:100%; text-indent:-1987px; overflow:hidden;}
+.slogan{ position:absolute;color:#FFF;margin:45px 0 0 225px; font-size:18px;}
+#top_link{margin:40px 0 0 760px; position:absolute;}
+#top_link a{margin:0 7px;}
+
+
+.welcome{ position:absolute;margin:10px 0 0 710px; width:160px; text-align:right;}
+
+
+@-webkit-keyframes cloud{ 
+0%{-webkit-transform:translateY(0%);}
+50%{-webkit-transform:translateY(100%);}
+100%{-webkit-transform:translateY(0%);}
+ }
+@-moz-keyframes cloud{ 
+0%{-moz-transform:translateY(0%);}
+50%{-moz-transform:translateY(100%);}
+100%{-moz-transform:translateY(0%);}
+}
+@keyframes cloud{
+0%{transform:translateY(0%);}
+50%{transform:translateY(100%);}
+100%{transform:translateY(0%);}
+}
+
+
+
+/* ----------脚 */
+#footer{ height:310px; background-color:#b9baba; width:100%;padding-top:40px;}
+.site_map{ float:left; width:97px; overflow:hidden;padding-left:20px;}
+.site_map dt{border-right:1px solid #adadac; height:14px; line-height:14px; margin-bottom:8px; font-weight:bold}
+.site_map a:hover,.e_title_mail:hover{color:#FFF; text-decoration:none;}
+
+

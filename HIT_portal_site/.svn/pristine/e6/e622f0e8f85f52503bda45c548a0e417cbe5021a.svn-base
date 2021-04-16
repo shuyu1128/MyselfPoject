@@ -1,0 +1,22 @@
+<!--
+ * @Author: pjl
+ * @Date: 2021-03-17 13:20:13
+ * @LastEditors: pjl
+ * @LastEditTime: 2021-03-17 13:22:12
+ * @Description: 园区简介
+-->
+<template>
+  <div>
+    园区简介
+  </div>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+
+</style>

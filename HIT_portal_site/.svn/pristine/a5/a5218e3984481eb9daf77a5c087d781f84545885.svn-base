@@ -1,0 +1,116 @@
+<!--
+ * @Author: sy
+ * @Date: 2021-03-17 16:29:45
+ * @LastEditors: sy
+ * @LastEditTime: 2021-03-18 11:51:13
+ * @Description: 主页最新动态
+-->
+<template>
+  <div>
+    <div>
+      <h2 class="dynamic_1">最新动态</h2>
+    </div>
+    <div class="dynamic_box">
+      <div v-for="(item, id) in dynamicList" :key="id">
+        <div class="news-box">
+          <div class="days-box">
+            <strong class="last-day">{{ item.lastday }}</strong>
+            <p> <a href="">{{ item.lasttime }}</a></p> 
+          </div>
+          <p class="activitytitle">
+            {{ item.activitytitle }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      dynamicList: [
+        {
+          activitytitle: "123456",
+          lasttime: "2021.1",
+          lastday: "11",
+          id: "1",
+        },
+        {
+          activitytitle: "7891011",
+          lasttime: "2021.2",
+          lastday: "12",
+          id: "2",
+        },
+        {
+          activitytitle: "11121314",
+          lasttime: "2021.3",
+          lastday: "13",
+          id: "3",
+        },
+        {
+          activitytitle: "151617118",
+          lasttime: "2021.4",
+          lastday: "14",
+          id: "4",
+        },
+        {
+          activitytitle: "1920212223",
+          lasttime: "2021.5",
+          lastday: "15",
+          id: "5",
+        },
+        {
+          activitytitle: "2425262728",
+          lasttime: "2021.6",
+          lastday: "16",
+          id: "6",
+        },
+      ],
+    };
+  },
+};
+</script>
+
+<style>
+.dynamic_box {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.news-box {
+  display: flex;
+  width: 340px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+}
+.days-box {
+  width: 70px;
+  height: 57px;
+  background: #dfdae2;
+  text-align: center;
+  font-size: 12px;
+  color: #703e84;
+  padding-top: 13px;
+}
+.last-day {
+  font-size: 27px;
+}
+.activitytitle {
+  font-size: 16px;
+  line-height: 27px;
+  float: left;
+  width: 250px;
+  margin-top: 10px;
+  margin-left: 20px;
+  color: #666666;
+  text-decoration: none;
+}
+.dynamic_1 {
+  font-size: 23px;
+  color: #77468b;
+  text-align: center;
+  line-height: 75px;
+}
+</style>

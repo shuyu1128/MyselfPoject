@@ -1,0 +1,28 @@
+/*
+ * @Author: pjl
+ * @Date: 2021-03-15 18:21:49
+ * @LastEditors: pjl
+ * @LastEditTime: 2021-03-17 10:21:15
+ * @Description: 入口文件
+ */
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import store from './store'
+// 引入外部css
+import './assets/css/base.css'
+import './assets/css/index.css'
+import './assets/css/layout.css'
+// element ui引入
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+Vue.use(ElementUI);
+
+
+Vue.config.productionTip = false
+
+new Vue({
+  router,
+  store,
+  render: h => h(App)
+}).$mount('#app')

@@ -1,0 +1,207 @@
+<!--
+ * @Author: sy
+ * @Date: 2021-03-17 16:30:25
+ * @LastEditors: sy
+ * @LastEditTime: 2021-03-18 17:21:15
+ * @Description: 团队
+-->
+<template>
+  <div class="team_bigBox">
+    <div class="com_3">
+      <h2>团队故事</h2>
+    </div>
+    <div class="teamStory_box">
+      <div class="story_box" v-for="(item, id) in alternateArray" :key="id">
+        <img :src="item.pictureaddress" class="img_box" />
+        <p class="storytitle">
+          {{ item.storytitle }}
+        </p>
+      </div>
+    </div>
+    <div class="point">
+      <span
+        v-for="(item, index) in pointGroup"
+        :key="index"
+        :class="{ active: index === pointClick }"
+        @click="changePoint(index)"
+      >
+      </span>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      storyPagination: [
+        {
+          pictureaddress:
+            "https://img01.jituwang.com/170722/256853-1FH209143796.jpg",
+          storytitle: "123123",
+          id: "",
+        },
+        {
+          pictureaddress:
+            "https://img01.jituwang.com/170627/256884-1F62FP50380.jpg",
+          storytitle: "456456",
+          id: "",
+        },
+        {
+          pictureaddress:
+            "https://img01.jituwang.com/170722/256853-1FH2091K758.jpg",
+          storytitle: "798789",
+          id: "",
+        },
+        {
+          pictureaddress:
+            "https://img01.jituwang.com/170722/256853-1FH209143796.jpg",
+          storytitle: "10111213",
+          id: "",
+        },
+        {
+          pictureaddress:
+            "https://img01.jituwang.com/170627/256884-1F62FP50380.jpg",
+          storytitle: "141516",
+          id: "",
+        },
+        {
+          pictureaddress:
+            "https://img01.jituwang.com/170722/256853-1FH2091K758.jpg",
+          storytitle: "171819",
+          id: "",
+        },
+        {
+          pictureaddress:
+            "https://img01.jituwang.com/170722/256853-1FH209143796.jpg",
+          storytitle: "20212223",
+          id: "",
+        },
+        {
+          pictureaddress:
+            "https://img01.jituwang.com/170627/256884-1F62FP50380.jpg",
+          storytitle: "24252627",
+          id: "",
+        },
+        {
+          pictureaddress:
+            "https://img01.jituwang.com/170722/256853-1FH209143796.jpg",
+          storytitle: "28293031",
+          id: "",
+        },
+        {
+          pictureaddress:
+            "https://img01.jituwang.com/170627/256884-1F62FP50380.jpg",
+          storytitle: "3233343536",
+          id: "",
+        },
+        {
+          pictureaddress:
+            "https://img01.jituwang.com/170722/256853-1FH2091K758.jpg",
+          storytitle: "37383940",
+          id: "",
+        },
+        {
+          pictureaddress:
+            "https://img01.jituwang.com/170722/256853-1FH209143796.jpg",
+          storytitle: "41424344",
+          id: "",
+        },
+        {
+          pictureaddress:
+            "https://img01.jituwang.com/170627/256884-1F62FP50380.jpg",
+          storytitle: "4546474849",
+          id: "",
+        },
+        {
+          pictureaddress:
+            "https://img01.jituwang.com/170722/256853-1FH2091K758.jpg",
+          storytitle: "5051525354",
+          id: "",
+        },
+      ],
+      activityInformation: [
+        {
+          storytitle: "",
+          storyaddress: "",
+          storycontent: "",
+          leader: "",
+          leaderintroduction: "",
+        },
+      ],
+      pointIndex: 0,
+      point: 1,
+      pointGroup: [],
+      pointClick: false ,
+      alternateArray:[],
+    };
+  },
+  methods: {
+    changePoint(index) {
+      this.alternateArray = this.storyPagination.slice(3*index , 3*index+3)
+      this.pointClick = index
+    },
+    pointSpan() {
+      this.pointIndex = Math.ceil(this.storyPagination.length / 3);
+      for (this.point = 1; this.point <= this.pointIndex; this.point++) {
+        this.pointGroup.push(this.point);
+      }
+    },
+  },
+  created() {
+    this.pointSpan();
+    this.changePoint(0)
+  },
+};
+</script>
+
+<style>
+.story_box {
+  width: 360px;
+  height: 280px;
+  background: #fff;
+  flex-shrink: 0;
+  margin-left: 20px;
+}
+.team_bigBox {
+  /* padding-top: 37px; */
+  height: 500px;
+  overflow: hidden;
+}
+.com_3 h2 {
+  font-size: 23px;
+  line-height: 97px;
+  text-align: center;
+}
+.teamStory_box {
+  display: flex;
+}
+.img_box {
+  width: 100%;
+  height: 100%;
+}
+.storytitle {
+  width: 360px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.7);
+  transform: translate(0%, -110%);
+  text-align: center;
+  line-height: 40px;
+  color: white;
+}
+
+.point {
+  margin-top: 20px;
+  text-align: center;
+}
+.point span {
+  padding: 10px;
+  margin-right: 20px;
+  border-radius: 50%;
+  background-color: #fff;
+  font-size: 0;
+}
+.point span.active {
+  background-color: #f00;
+}
+</style>

@@ -1,0 +1,126 @@
+<!--
+ * @Author: sy
+ * @Date: 2021-03-17 16:27:59
+ * @LastEditors: sy
+ * @LastEditTime: 2021-03-22 15:08:52
+ * @Description: 轮播图
+-->
+<template>
+  <div id="imgreturn">
+    <div class="slider-wrap" @mouseenter="stopPlay" @mouseleave="play">
+      <li
+        class="item"
+        v-for="(item, index) in imgreturn"
+        :key="index"
+        v-show="mark === index"
+      >
+        <a :href="item.carouseladdress" style="cursor: default"
+          ><img :src="item.carouselpicture" :alt="item.carouseltitle"
+        /></a>
+      </li>
+
+      <div class="dot">
+        <span
+          v-for="(item, index) in imgreturn"
+          :key="index"
+          :class="{ active: index === mark }"
+          @click="changeSilder(index)"
+        >
+        </span>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      imgreturn: [
+        {
+          carouseltitle: "123",
+          carouseladdress: "https://www.baidu.com/",
+          carouselpicture:
+            "https://img01.jituwang.com/201103/170741-201103201U755.jpg",
+        },
+        {
+          carouseltitle: "123",
+          carouseladdress: "https://www.baidu.com/",
+          carouselpicture:
+            "https://img01.jituwang.com/201103/170741-20110320153794.jpg",
+        },
+        {
+          carouseltitle: "123",
+          carouseladdress: "https://www.baidu.com/",
+          carouselpicture:
+            "https://img01.jituwang.com/201103/170741-20110319553798.jpg",
+        },
+        {
+          carouseltitle: "123",
+          carouseladdress: "https://www.baidu.com/",
+          carouselpicture:
+            "https://img01.jituwang.com/201103/170741-201103195U788.jpg",
+        },
+      ],
+      mark: 0,
+      timer: null,
+    };
+  },
+  methods: {
+    changeSilder(index) {
+      this.mark = index;
+    },
+    play() {
+      this.timer = setTimeout(() => {
+        this.autoPlay();
+      }, 3000);
+    },
+    autoPlay() {
+      this.mark++;
+      if (this.mark === this.imgreturn.length) {
+        this.mark = 0;
+      }
+      this.play();
+    },
+    stopPlay() {
+      clearTimeout(this.timer);
+    },
+  },
+  mounted() {
+    this.play();
+  },
+};
+</script>
+
+<style>
+.slider-wrap {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+}
+
+.item,
+.item img {
+  display: block;
+  width: 100%;
+  height: 350px;
+}
+.dot {
+  position: absolute;
+  bottom: 20px;
+  right: 15%;
+}
+.dot span {
+  padding: 10px;
+  margin-right: 20px;
+  border-radius: 50%;
+  background-color: #fff;
+  font-size: 0;
+}
+.dot span.active {
+  background-color: #f00;
+}
+</style>
+
+  

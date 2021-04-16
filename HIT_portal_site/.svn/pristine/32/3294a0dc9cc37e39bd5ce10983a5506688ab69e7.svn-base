@@ -1,0 +1,273 @@
+/*
+ * @Author: pjl
+ * @Date: 2021-03-15 18:21:49
+ * @LastEditors: pjl
+ * @LastEditTime: 2021-03-23 14:42:55
+ * @Description: 路由配置
+ */
+import Vue from 'vue'
+import _ from "lodash";
+import axios from 'axios'
+import VueRouter from 'vue-router'
+import layout from '../views/layout.vue'
+
+// 不是必须加载的组件使用懒加载
+// 主页
+const index = () =>
+  import('@/views/index/mainIndex.vue')
+// 园区介绍
+const introduce = () =>
+  import('@/views/introduce/introduceIndex.vue')
+// 新闻动态
+const newsInformation = () =>
+  import('@/views/newsInformation/newsInformationIndex.vue')
+// 创新创业团队
+const InnovationTeam = () =>
+  import('@/views/InnovationTeam/InnovationTeamIndex.vue')
+// 创业企业
+const EntrepreneurialTeam = () =>
+  import('@/views/EntrepreneurialTeam/EntrepreneurialTeamIndex.vue')
+// 视频库
+const VideoLibrary = () =>
+  import('@/views/VideoLibrary/VideoLibraryIndex.vue')
+// 当前活动
+const currentActivity = () =>
+  import('@/views/currentActivity/currentActivityIndex.vue')
+// 往期活动
+const PastActivity = () =>
+  import('@/views/PastActivity/PastActivityIndex.vue')
+// 自我学习及课程学习
+const learn = () =>
+  import('@/views/learn/LearnIndex.vue')
+// 互联网+
+const InternetPlus = () =>
+  import('@/views/InternetPlus/InternetPlusIndex.vue')
+// 深创赛
+const DIcompetitionIndex = () =>
+  import('@/views/DIcompetition/DIcompetitionIndex.vue')
+// 创业伙伴
+const VenturePartner = () =>
+  import('@/views/VenturePartner/VenturePartnerIndex.vue')
+// 团队招募
+const TeamRecruitment = () =>
+  import('@/views/TeamRecruitment/TeamRecruitmentIndex.vue')
+// 产业园
+const IndustrialPark = () =>
+  import('@/views/IndustrialPark/IndustrialParkIndex.vue')
+Vue.use(VueRouter)
+
+const routes = [{
+  path: '/',
+  name: '主页',
+  component: layout,
+  children: [{
+    path: '/',
+    name: '主页',
+    component: index,
+    children: []
+  }, ]
+}, {
+  path: '/',
+  name: '我们',
+  component: layout,
+  children: [{
+      path: '/introduce',
+      name: '园区介绍',
+      component: introduce,
+      children: []
+    },
+    {
+      path: '/newsInformation',
+      name: '新闻动态',
+      component: newsInformation,
+      children: []
+    },
+    {
+      path: '/InnovationTeam',
+      name: '创新创业团队',
+      component: InnovationTeam,
+      children: []
+    },
+    {
+      path: '/EntrepreneurialTeam',
+      name: '创业企业',
+      component: EntrepreneurialTeam,
+      children: []
+    },
+    {
+      path: '/VideoLibrary',
+      name: '视频库',
+      component: VideoLibrary,
+      children: []
+    },
+  ]
+}, {
+  path: '/',
+  name: '活动',
+  component: layout,
+  children: [{
+      path: '/currentActivity',
+      name: '当前活动',
+      component: currentActivity,
+      children: []
+    },
+    {
+      path: '/PastActivity',
+      name: '往期活动',
+      component: PastActivity,
+      children: []
+    }
+  ]
+}, {
+  path: '/',
+  name: '学习',
+  component: layout,
+  alone: true,
+  children: [{
+    path: '/learn',
+    name: '学习',
+    component: learn,
+    children: []
+  }]
+}, {
+  path: '/',
+  name: '互联网+',
+  component: layout,
+  alone: true,
+  children: [{
+    path: '/InternetPlus',
+    name: '互联网+',
+    component: InternetPlus,
+    children: []
+  }]
+}, {
+  path: '/',
+  name: '深创赛',
+  component: layout,
+  alone: true,
+  children: [{
+    path: '/DIcompetitionIndex',
+    name: '深创赛',
+    component: DIcompetitionIndex,
+    children: []
+  }]
+}, {
+  path: '/',
+  name: '项目孵化',
+  component: layout,
+  children: [{
+      ifTo: true,
+      path: 'sssasds',
+      name: '创新创业团队入驻'
+    },
+    {
+      ifTo: true,
+      path: 'asfadfsss',
+      name: '企业入驻'
+    },
+    {
+      ifTo: true,
+      path: 'ssdsffdgs',
+      name: '会员中心'
+    },
+    {
+      ifTo: true,
+      path: 'swrerss',
+      name: '会议室预约'
+    },
+    {
+      ifTo: true,
+      path: 'ssdfss',
+      name: '机械加工平台预约'
+    },
+    {
+      ifTo: true,
+      path: 'sqwess',
+      name: '师生创新创业互动教育馆预约'
+    },
+    {
+      ifTo: true,
+      path: 'asdsss',
+      name: '创业导师预约'
+    },
+    {
+      path: '/VenturePartner',
+      name: '创业伙伴',
+      component: VenturePartner,
+      children: []
+    },
+    {
+      path: '/TeamRecruitment',
+      name: '团队招募',
+      component: TeamRecruitment,
+      children: []
+    },
+    {
+      path: '/IndustrialPark',
+      name: '产业园',
+      component: IndustrialPark,
+      children: []
+    }
+  ]
+}, {
+  path: '/',
+  name: '其他页面',
+  component: layout,
+  children: [{
+    path: '/teamStory',
+    component: () => import("@/views/index/teamStory.vue"),
+    name: '团队故事详情'
+  }]
+}]
+
+
+let sroleData = [
+  '园区介绍', '新闻动态', '视频库', '学习', '活动'
+]
+
+
+// 是否有权限访问某个路径
+const hasPermission = (data, roleData) => {
+  for (let index = 0; index < data.length; index++) {
+    const element = data[index];
+    let flage = _.findIndex(roleData, (o) => {
+      return o == element.name;
+    });
+    if (flage != -1) {
+      delete data[index]
+      data.splice(index, 1)
+      index--
+    }
+    if (element.children && element.children.length >= 1) {
+      hasPermission(element.children, roleData)
+    }
+  }
+};
+
+
+
+
+
+const router = new VueRouter({
+  mode: 'hash',
+  base: process.env.BASE_URL,
+  routes: routes
+})
+var flage = false
+router.beforeEach((to, from, next) => {
+  if (!flage) {
+    axios.post(process.env.VUE_APP_URL + "/client/navigation/selNavigationTree").then(res => {
+      hasPermission(routes, res.data)
+      flage = true
+      next({
+        ...to,
+        replace: true
+      });
+    })
+  } else {
+    next();
+  }
+})
+
+
+export default router

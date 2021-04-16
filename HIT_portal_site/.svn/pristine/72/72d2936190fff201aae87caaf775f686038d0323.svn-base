@@ -1,0 +1,22 @@
+<!--
+ * @Author: pjl
+ * @Date: 2021-03-17 13:29:32
+ * @LastEditors: pjl
+ * @LastEditTime: 2021-03-17 13:30:31
+ * @Description: 往期活动
+-->
+<template>
+  <div>
+    往期活动
+  </div>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+
+</style>

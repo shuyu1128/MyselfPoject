@@ -1,0 +1,86 @@
+<!--
+ * @Author: pjl
+ * @Date: 2021-03-17 10:09:56
+ * @LastEditors: pjl
+ * @LastEditTime: 2021-03-17 16:02:56
+ * @Description: 布局文件
+-->
+<template>
+  <div class="layout">
+    <!-- 头部加导航 -->
+    <header class="head">
+      <div class="header wid">
+        <div class="top">
+          <a href="javascript:;">登陆</a>
+          <a href="javascript:;">注册</a>
+        </div>
+        <div class="logo_nav clearfix">
+          <div class="logo fl"><a href="/"><img src="../assets/img/logo.gif" width="196" height="49"></a>
+            <p>哈尔滨工业大学创新创业网</p>
+          </div>
+          <div class="nav fl" id="nav">
+            <ul class="clearfix">
+              <!-- 自定义渲染 -->
+              <li v-for="item in routerNav" v-show="item.name!=='主页'" :key="item.name" class="one_nav"><a href="javascript:;" @click="oneNavTo(item)">{{item.name}}</a>
+                <ul v-if="!item.alone" class="box" style="position:absolute; left:0px;">
+                  <li v-for="xitem in item.children" :key="xitem.path"><a href="javascript:;" @click="routerTo(xitem.path)">{{xitem.name}}</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- 内容区域 -->
+    <section class="section">
+      <router-view />
+    </section>
+    <!-- footer区域 -->
+    <footer class="foot">
+      <div class="footer wid clearfix">
+        <div class="ft_l fl clearfix">
+          <dl v-for="item in routerNav" v-show="item.name!=='主页'" :key="item.name">
+            <dt @click="oneNavTo(item)">{{item.name}}</dt>
+            <dd v-for="xitem in item.children" v-show="!item.alone" :key="xitem.name"><a href="javascript:;" @click="routerTo(xitem.path)">{{xitem.name}}</a></dd>
+          </dl>
+        </div>
+        <div class="fl_r fr">
+          <h2>关注微信</h2>
+          <img src="/images/v1/erweima.gif" width="116" height="115">
+          <p><a href="javascript:;">获取电子资讯</a></p>
+        </div>
+      </div>
+      <div class="ft_bot">
+        <p>版权所有©哈工大大学生创新创业园 2021</p>
+      </div>
+    </footer>
+  </div>
+</template>
+
+<script>
+export default {
+  created() {
+    
+  },
+  computed: {
+    routerNav() {
+      return this.$router.options.routes;
+    },
+  },
+  methods: {
+    oneNavTo(data) {
+      if (data.alone) {
+        let path = data.children[0].path;
+        this.$router.push(path);
+      }
+    },
+    routerTo(path) {
+      this.$router.push(path);
+    },
+  },
+};
+</script>
+
+<style>
+</style>

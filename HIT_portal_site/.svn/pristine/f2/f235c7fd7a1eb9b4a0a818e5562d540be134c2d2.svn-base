@@ -1,0 +1,558 @@
+<!--
+ * @Author: pjl
+ * @Date: 2021-03-17 13:23:13
+ * @LastEditors: sy
+ * @LastEditTime: 2021-03-22 17:56:26
+ * @Description: 新闻动态
+-->
+
+
+<template>
+  <div>
+    <!-- 轮播 -->
+    <div class="newspicture_box" @mouseenter="stopPlay" @mouseleave="play">
+      <li
+        class="newspicture newspicture_com"
+        v-for="(item, index) in keyNews"
+        :key="index"
+        v-show="markPomt === index"
+      >
+        <img :src="item.newspicture" />
+      </li>
+
+      <div class="dotPoint">
+        <span
+          v-for="(item, index) in keyNews"
+          :key="index"
+          :class="{ active: index === markPomt }"
+          @click="changeSilder(index)"
+        >
+        </span>
+      </div>
+    </div>
+    <!-- 内容 -->
+    <div class="wrap">
+      <!-- 内容导航 -->
+      <div class="clear50"></div>
+
+      <div class="wrap_header">
+        <a href="#" class="wrap_headerNews" @click="newsBox_show()">
+          新　　闻</a
+        >
+
+        <a href="#" class="wrap_headerReport" @click="reportBox_show()">
+          媒体报道
+        </a>
+      </div>
+
+      <template v-if="this.newsInformationKey == 1">
+        <div>
+          <!-- 新闻内容 -->
+          <div class="newsBox">
+            <div
+              v-for="(item, index) in selNewsListByParamGroup"
+              :key="index"
+              class="news_son"
+            >
+              <img :src="item.newspicture" class="newsImg_box" />
+
+              <div class="newsInside_box">
+                <p class="">{{ item.newstitle }}</p>
+                <p class="">{{ item.lasttime }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="clear50"></div>
+          <!-- 分页 -->
+          <div class="newsPointbox">
+            <p class="newsPointcommon">当前页{{this.changeVaule+1}}/{{this.newsPoint}}</p>
+            <p class="newsPointcommon" @click="paginationChangestar()">首页</p>
+            <p class="newsPointcommon" @click="paginationChangeup()">上一页</p>
+            <span
+              v-for="(item, index) in newsPointgroup"
+              :key="index"
+              @click="paginationChange(index)"
+              class="newsPointgroup"
+            >
+              {{ index + 1 }}
+            </span>
+            <p class="newsPointcommon" @click="paginationChangedown()">
+              下一页
+            </p>
+            <p class="newsPointcommon" @click="paginationChangeend()">最后页</p>
+            <select  class="newsPointcommon newsPointselect">
+              <option value="" v-for="(item , index) in newsPointgroup" :key="index">第{{index+1}}页</option>
+            </select>
+          </div>
+        </div>
+      </template>
+      <template v-if="this.newsInformationKey == 2">
+        <div>
+          <!-- 新闻内容 -->
+          <div class="newsBox">
+            <div
+              v-for="(item, index) in selNewsListByParamGroup"
+              :key="index"
+              class="news_son"
+            ></div>
+          </div>
+
+          <div class="clear50"></div>
+          <!-- 分页 -->
+          <div>
+            <span
+              v-for="(item, index) in newsPointgroup"
+              :key="index"
+              @click="paginationChange(index)"
+            >
+            </span>
+          </div>
+        </div>
+      </template>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      keyNews: [
+        {
+          newspicture:
+            "http://www.x-lab.tsinghua.edu.cn/images/juanzengzhichi/join.jpg",
+          newstitle: "",
+          id: "",
+        },
+        {
+          newspicture:
+            "http://www.x-lab.tsinghua.edu.cn/images/banner_sound.jpg",
+          newstitle: "",
+          id: "",
+        },
+        {
+          newspicture:
+            "http://www.x-lab.tsinghua.edu.cn/images/juanzengzhichi/join.jpg",
+          newstitle: "",
+          id: "",
+        },
+        {
+          newspicture:
+            "http://www.x-lab.tsinghua.edu.cn/images/banner_sound.jpg",
+          newstitle: "",
+          id: "",
+        },
+        {
+          newspicture:
+            "http://www.x-lab.tsinghua.edu.cn/images/juanzengzhichi/join.jpg",
+          newstitle: "",
+          id: "",
+        },
+        {
+          newspicture:
+            "http://www.x-lab.tsinghua.edu.cn/images/banner_sound.jpg",
+          newstitle: "",
+          id: "",
+        },
+      ],
+      selNewsListByParam: [
+        {
+          newspicture: "",
+          newstitle: "111",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+        {
+          newspicture: "",
+          newstitle: "222",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+        {
+          newspicture: "",
+          newstitle: "333",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+        {
+          newspicture: "",
+          newstitle: "444",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+        {
+          newspicture: "",
+          newstitle: "555",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+        {
+          newspicture: "",
+          newstitle: "666",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+        {
+          newspicture: "",
+          newstitle: "777",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+        {
+          newspicture: "",
+          newstitle: "888",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+        {
+          newspicture: "",
+          newstitle: "999",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+        {
+          newspicture: "",
+          newstitle: "000",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+        {
+          newspicture: "",
+          newstitle: "qqq",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+        {
+          newspicture: "",
+          newstitle: "www",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+        {
+          newspicture: "",
+          newstitle: "eee",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+        {
+          newspicture: "",
+          newstitle: "rrr",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+        {
+          newspicture: "",
+          newstitle: "ttt",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+        {
+          newspicture: "",
+          newstitle: "yyy",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+        {
+          newspicture: "",
+          newstitle: "uuu",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+        {
+          newspicture: "",
+          newstitle: "iii",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+        {
+          newspicture: "",
+          newstitle: "ooo",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+        {
+          newspicture: "",
+          newstitle: "ppp",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+        {
+          newspicture: "",
+          newstitle: "aaa",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+        {
+          newspicture: "",
+          newstitle: "sss",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+        {
+          newspicture: "",
+          newstitle: "ddd",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+        {
+          newspicture: "",
+          newstitle: "fff",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+        {
+          newspicture: "",
+          newstitle: "ggg",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+        {
+          newspicture: "",
+          newstitle: "hhh",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+        {
+          newspicture: "",
+          newstitle: "jjj",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+        {
+          newspicture: "",
+          newstitle: "kkk",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+        {
+          newspicture: "",
+          newstitle: "lll",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+        {
+          newspicture: "",
+          newstitle: "zzz",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+        {
+          newspicture: "",
+          newstitle: "xxx",
+          lasttime: "2021-3-22",
+          id: "",
+        },
+      ],
+      markPomt: 0,
+      timer: null,
+
+      selNewsListByParamGroup: [],
+      newsPointgroup: [],
+      newsInformationKey: 1,
+      newsPoint: 0,
+      Point: 1,
+      changeVaule: 0,
+    };
+  },
+  methods: {
+    newsBox_show() {
+      this.newsInformationKey = 1;
+      this.paginationChange(0);
+    },
+    reportBox_show() {
+      this.newsInformationKey = 2;
+      this.paginationChange(0);
+    },
+    paginationChange(index) {
+      this.selNewsListByParamGroup = this.selNewsListByParam.slice(
+        index * 15,
+        index * 15 + 15
+      );
+      this.changeVaule = index;
+    },
+    paginationChangestar() {
+      this.paginationChange(0);
+    },
+    paginationChangeup() {
+      if (this.changeVaule > 0) {
+        this.paginationChange(this.changeVaule - 1);
+      } else {
+        this.paginationChange(0);
+      }
+    },
+    paginationChangedown() {
+      if (this.changeVaule < this.newsPoint - 1) {
+        this.paginationChange(this.changeVaule + 1);
+      } else {
+        this.paginationChange(this.newsPoint - 1);
+      }
+    },
+    paginationChangeend() {
+      this.paginationChange(this.newsPoint - 1);
+    },
+    newsInformation() {
+      this.newsPoint = Math.ceil(this.selNewsListByParam.length / 15);
+      for (this.Point = 1; this.Point <= this.newsPoint; this.Point++) {
+        this.newsPointgroup.push(this.Point);
+      }
+    },
+
+    changeSilder(index) {
+      this.markPomt = index;
+    },
+    play() {
+      this.timer = setTimeout(() => {
+        this.autoPlay();
+      }, 3000);
+    },
+    autoPlay() {
+      this.markPomt++;
+      if (this.markPomt === this.keyNews.length) {
+        this.markPomt = 0;
+      }
+      this.play();
+    },
+    stopPlay() {
+      clearTimeout(this.timer);
+    },
+  },
+  mounted() {
+    this.play();
+  },
+  created() {
+    this.paginationChange(0);
+    this.newsInformation();
+  },
+};
+</script>
+
+<style>
+body {
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.newspicture_box {
+  width: 100%;
+  height: 330px;
+  overflow: hidden;
+}
+
+.newspicture_com {
+  height: 330px;
+  text-align: center;
+}
+
+.wrap {
+  width: 974px;
+  height: 861px;
+}
+
+.clear50 {
+  clear: both;
+  height: 50px;
+  line-height: 0px;
+  font-size: 0px;
+  overflow: hidden;
+}
+
+.wrap {
+  height: 861px;
+}
+
+.wrap_header {
+  font-size: 19px;
+  width: 100%;
+  height: 50px;
+}
+
+.wrap_header a {
+  /* display: block; */
+  padding: 0 15px;
+  height: 35px;
+  line-height: 35px;
+  float: left;
+}
+
+.wrap_headerNews {
+  color: #81358c;
+  letter-spacing: 10px;
+}
+
+.news_son {
+  width: 194px;
+  height: 205px;
+}
+
+.news_son :hover {
+  cursor: default;
+  color: #81358c;
+}
+
+.newsImg_box {
+  border: 10px solid #ababac;
+  height: 50%;
+  width: 166px;
+}
+
+.newsInside_box {
+  margin: 0 0 0 10px;
+  font-size: 12px;
+  line-height: 180%;
+  color: #808080;
+}
+
+.newsPointgroup {
+  height: 50px;
+  cursor: pointer;
+  letter-spacing: 8px;
+}
+
+.dotPoint {
+  top: 455px;
+  position: absolute;
+  right: 100px;
+}
+.dotPoint span {
+  padding: 10px;
+  margin-right: 20px;
+  border-radius: 50%;
+  background-color: #fff;
+  font-size: 0;
+}
+.dotPoint span.active {
+  background-color: #f00;
+}
+
+.newspicture_boxgGroup,
+.newspicture,
+.newspicture img {
+  display: block;
+  width: 100%;
+  height: 350px;
+}
+
+.newsBox {
+  height: 615px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.newsPointbox {
+  display: flex;
+  height: 30px;
+  line-height: 30px;
+  font-size: 13px;
+}
+
+.newsPointcommon {
+  padding: 0 10px;
+  cursor: pointer;
+}
+
+.newsPointselect{
+  width: 80px;
+  height: 25px;
+}
+</style>

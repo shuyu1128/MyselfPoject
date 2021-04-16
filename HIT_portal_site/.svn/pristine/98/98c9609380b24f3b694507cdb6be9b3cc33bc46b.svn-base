@@ -1,0 +1,22 @@
+<!--
+ * @Author: pjl
+ * @Date: 2021-03-17 13:27:17
+ * @LastEditors: pjl
+ * @LastEditTime: 2021-03-17 13:27:32
+ * @Description: 视频库
+-->
+<template>
+  <div>
+    视频库
+  </div>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+
+</style>

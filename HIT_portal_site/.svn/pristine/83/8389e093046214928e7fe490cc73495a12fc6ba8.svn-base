@@ -1,0 +1,22 @@
+<!--
+ * @Author: pjl
+ * @Date: 2021-03-23 14:29:49
+ * @LastEditors: pjl
+ * @LastEditTime: 2021-03-23 14:30:31
+ * @Description: 团队故事详情页面
+-->
+<template>
+  <div>
+    团队故事详情页面
+  </div>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+
+</style>

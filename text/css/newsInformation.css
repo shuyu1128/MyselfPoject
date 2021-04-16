@@ -1,0 +1,161 @@
+/* 新闻通知 */
+.news-information-box {
+    display: flex;
+    margin-top: 100px;
+    height: 500px;
+}
+
+/* 新闻 */
+.news-box {
+    width: 45%;
+    height: 300px;
+    display: inline-block;
+}
+
+.news-box-line {
+    width: 27%;
+    height: 0px;
+    border: 1px solid red;
+    margin-top: 10px;
+}
+
+.news-box-header {
+    height: 100%;
+    border-bottom: 0.5px solid rgba(226, 223, 219, 0.849);
+}
+
+.news-box-headerTitle {
+    display: flex;
+}
+
+.newsPic {
+    margin-right: 2%;
+}
+
+.news-main1 {
+    margin-top: 40px;
+    display: flex;
+}
+
+.news-main2 {
+    margin-top: 40px;
+    display: flex;
+}
+
+.news-main-pic {
+    width: 35%;
+    height: 130px;
+}
+
+.news-main-box {
+    margin-left: 30px;
+    width: 70%;
+    height: 130px;
+}
+
+.news-p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.news-p1 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.news-main-h1 {
+    margin: 0;
+}
+
+.news-main-p {
+    font-size: 12px;
+}
+
+.news-a a {
+    color: rgba(7, 7, 7, 0.945);
+}
+
+.news-a a:hover {
+    color: rgb(196, 4, 4);
+    text-decoration: none;
+}
+
+/* 通知 */
+.information-box {
+    width: 45%;
+    height: 300px;
+    display: inline-block;
+    margin-left: 10%;
+}
+
+.information-box-header {
+    border-bottom: 0.5px solid rgba(226, 223, 219, 0.849);
+}
+
+.information-box-headerTitle {
+    display: flex;
+}
+
+.information-box-line {
+    width: 27%;
+    height: 0px;
+    border: 1px solid blue;
+    margin-top: 10px;
+}
+
+.inforPic {
+    margin-right: 2%;
+}
+
+.inforData {
+    /* width: 100px; */
+    height: 20px;
+    text-align: center;
+    background: rgba(110, 97, 97, 0.527);
+    border-radius: 10px;
+    font-size: 8px;
+    padding: 0 10px;
+    margin-right: 20px;
+}
+
+.information-main1 {
+    display: flex;
+    margin-top: 40px;
+}
+
+.inforP1 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.inforP2 {
+    width: 200px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.information-main a {
+    color: rgba(7, 7, 7, 0.945);
+}
+
+.information-main a:hover {
+    color: rgba(233, 12, 12, 0.945);
+    text-decoration: none;
+}
+
+.carouselmap-box-pic {
+    width: 200px;
+    height: 350px;
+}
